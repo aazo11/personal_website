@@ -17,6 +17,10 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'aazo11 - Tech Founder & DevTools Investor',
     description: 'Personal website of aazo11 - Tech founder turned investor in devtools and software infrastructure',
+  },
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/apple-icon.svg',
   }
 }
 
