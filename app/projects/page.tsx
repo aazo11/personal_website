@@ -1,3 +1,22 @@
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Projects | aazo11',
+  description: 'Open source projects and experiments in devtools and infrastructure',
+  openGraph: {
+    title: 'Projects | aazo11',
+    description: 'Open source projects and experiments in devtools and infrastructure',
+    url: 'https://aazo11.dev/projects',
+    siteName: 'aazo11.dev',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Projects | aazo11',
+    description: 'Open source projects and experiments in devtools and infrastructure',
+  }
+}
+
 export default function ProjectsPage() {
   const projects = [
     {

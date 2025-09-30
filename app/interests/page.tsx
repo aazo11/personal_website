@@ -1,3 +1,22 @@
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Interests | aazo11',
+  description: 'Books, marathons, mountains, and other things that make me interesting',
+  openGraph: {
+    title: 'Interests | aazo11',
+    description: 'Books, marathons, mountains, and other things that make me interesting',
+    url: 'https://aazo11.dev/interests',
+    siteName: 'aazo11.dev',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Interests | aazo11',
+    description: 'Books, marathons, mountains, and other things that make me interesting',
+  }
+}
+
 export default function InterestsPage() {
   const interests = [
     {

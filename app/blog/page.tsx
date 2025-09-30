@@ -1,5 +1,23 @@
 import { getAllBlogPosts } from '@/lib/blog'
 import Link from 'next/link'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Blog | aazo11',
+  description: 'Writings on devtools, infrastructure, AI, and investing in developer-focused companies',
+  openGraph: {
+    title: 'Blog | aazo11',
+    description: 'Writings on devtools, infrastructure, AI, and investing in developer-focused companies',
+    url: 'https://aazo11.dev/blog',
+    siteName: 'aazo11.dev',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Blog | aazo11',
+    description: 'Writings on devtools, infrastructure, AI, and investing in developer-focused companies',
+  }
+}
 
 export default function BlogPage() {
   const posts = getAllBlogPosts()

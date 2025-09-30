@@ -1,3 +1,22 @@
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Investments | aazo11',
+  description: 'Portfolio companies and funds - investing in devtools and infrastructure startups',
+  openGraph: {
+    title: 'Investments | aazo11',
+    description: 'Portfolio companies and funds - investing in devtools and infrastructure startups',
+    url: 'https://aazo11.dev/investments',
+    siteName: 'aazo11.dev',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Investments | aazo11',
+    description: 'Portfolio companies and funds - investing in devtools and infrastructure startups',
+  }
+}
+
 export default function InvestmentsPage() {
 	enum Involvement {
   		Angel = "ANGEL",      // 0

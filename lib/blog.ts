@@ -12,6 +12,8 @@ export interface BlogPost {
   date: string
   content: string
   contentHtml?: string
+  summary?: string
+  featuredImage?: string
 }
 
 export function getBlogPostSlugs() {
@@ -49,11 +51,27 @@ export function getBlogPostBySlug(slug: string): BlogPost | null {
     `![$1](/blog/${slug}/$2)`
   )
   
+  // Extract first image from content
+  const imageMatch = content.match(/!\[([^\]]*)\]\(([^)]+)\)/)
+  const featuredImage = imageMatch ? `/blog/${slug}/${imageMatch[2]}` : undefined
+  
+  // Generate summary from content (first 160 chars of text)
+  const textContent = content.replace(/!\[([^\]]*)\]\([^)]+\)/g, '') // Remove images
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Replace links with text
+    .replace(/#{1,6}\s/g, '') // Remove headers
+    .replace(/\*/g, '') // Remove emphasis
+    .replace(/\n\n+/g, ' ') // Replace multiple newlines
+    .trim()
+  
+  const summary = data.summary || textContent.slice(0, 160) + (textContent.length > 160 ? '...' : '')
+  
   return {
     slug: slug,
     title: data.title || slug,
     date: data.date || '',
-    content: processedContent
+    content: processedContent,
+    summary: summary,
+    featuredImage: data.featuredImage || featuredImage
   }
 }
 
