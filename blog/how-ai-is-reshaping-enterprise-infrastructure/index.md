@@ -1,6 +1,6 @@
 ---
 title: "How AI Is Reshaping Enterprise Infrastructure"
-date: "2024-08-14"
+date: "2025-08-14"
 ---
 
 *Originally published on [Heavybit](https://www.heavybit.com/library/article/how-ai-is-reshaping-enterprise-infrastructure)*

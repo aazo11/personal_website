@@ -56,7 +56,7 @@ html, body {
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: 'Courier New', Courier, monospace;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.6;
   height: 100%;
 }
@@ -78,17 +78,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 18px;
+  font-size: 19px;
   margin-bottom: 20px;
 }
 
 h2 {
-  font-size: 16px;
+  font-size: 17px;
   margin-top: 30px;
 }
 
 h3 {
-  font-size: 14px;
+  font-size: 15px;
 }
 
 a {
@@ -114,21 +114,34 @@ li {
   margin: 5px 0;
 }
 
-pre, code {
+code {
   font-family: 'Courier New', Courier, monospace;
-  background-color: #111111;
-  padding: 2px 4px;
-  border: 1px solid var(--border-color);
+  font-size: 13px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border: none;
+  color: var(--link-color);
+  font-weight: normal;
+  border-radius: 3px;
 }
 
 pre {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: rgba(255, 255, 255, 0.05);
   padding: 15px;
   overflow-x: auto;
   margin: 15px 0;
+  border-left: 3px solid var(--text-color);
+  line-height: 1.4;
 }
 
-code {
+pre code {
+  color: var(--text-color);
+  background: none;
+  padding: 0;
+  border: none;
   font-size: 13px;
+  font-weight: normal;
 }
 
 blockquote {
@@ -160,7 +173,7 @@ article img {
 }
 
 .terminal-prompt {
-  font-size: 12px;
+  font-size: 13px;
   margin-bottom: 20px;
   font-weight: bold;
 }
@@ -298,7 +311,7 @@ nav li {
 
 .post-date {
   color: #00cc00;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .section {
@@ -328,7 +341,7 @@ footer {
   border: 1px solid var(--border-color);
   padding: 5px 10px;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 14px;
+  font-size: 15px;
   cursor: pointer;
 }
 
