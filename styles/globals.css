@@ -67,6 +67,11 @@ body {
   margin: 0 auto;
 }
 
+article {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
   margin: 20px 0 10px 0;
@@ -131,6 +136,27 @@ blockquote {
   padding-left: 15px;
   margin: 15px 0;
   color: #00cc00;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border: 1px solid var(--border-color);
+}
+
+article img {
+  max-width: 100%;
+  height: auto;
+  width: 100%;
+  object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  article img {
+    max-width: 700px;
+  }
 }
 
 .terminal-prompt {
@@ -215,6 +241,16 @@ nav li {
 @media (max-width: 768px) {
   body {
     padding-top: 60px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  article {
+    padding: 0;
+  }
+  
+  article img {
+    margin: 15px 0;
   }
   
   .hamburger {
