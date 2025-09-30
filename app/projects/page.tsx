@@ -20,14 +20,19 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   const projects = [
     {
-      name: "Project Alpha",
-      description: "Open source developer tool for X",
-      url: "https://github.com/aazo11/project-alpha"
+      name: "Dataherald",
+      description: "Natural language to SQL for enterprise databases",
+      url: "https://github.com/Dataherald/dataherald"
     },
     {
-      name: "Project Beta", 
-      description: "Infrastructure automation platform",
-      url: "https://github.com/aazo11/project-beta"
+      name: "Edge Inference Benchmarking", 
+      description: "Benchmarking framework for local LLM inference",
+      url: "https://github.com/aazo11/edgeinference"
+    },
+    {
+      name: "GitHub Assistant",
+      description: "AI-powered assistant for GitHub operations",
+      url: "https://github.com/reltadev/github-assistant"
     },
   ]
 
