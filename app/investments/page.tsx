@@ -7,6 +7,11 @@ export default function InvestmentsPage() {
 
   const investments = [
 	{
+		name:"Unikraft",
+		url:"https://Unikraft.cloud",
+		involvement: Involvement.Board
+	},
+	{
 		name:"Heavybit",
 		url:"https://heavybit.com",
 		involvement: Involvement.LP
