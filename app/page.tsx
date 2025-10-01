@@ -5,7 +5,7 @@ export default function Home() {
  
       <div className="section">
         <p>Amir A. Zohrenejad. I invest in devtools and infrastructure software at Heavybit. I was previously the co-founder and CTO of Dataherald.</p>
-        <p>This page collects my writings, software projects, investments and interesting tech papers and other areas of interest</p>
+        <p>This page collects my writings, investments, software projects I am working on and other random areas of interest</p>
       </div>
 
       <div className="section">
