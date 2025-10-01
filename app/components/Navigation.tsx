@@ -24,7 +24,7 @@ export function Navigation() {
           <li><Link href="/blog" onClick={() => setIsOpen(false)}>blog</Link></li>
           <li><Link href="/projects" onClick={() => setIsOpen(false)}>projects</Link></li>
           <li><Link href="/investments" onClick={() => setIsOpen(false)}>investments</Link></li>
-          <li><Link href="/interests" onClick={() => setIsOpen(false)}>interests</Link></li>
+          <li><Link href="/readings" onClick={() => setIsOpen(false)}>readings</Link></li>
         </ul>
       </nav>
       
