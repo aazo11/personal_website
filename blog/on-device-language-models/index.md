@@ -3,9 +3,7 @@ title: "On the accuracy of on-device language models"
 date: "2025-05-20"
 ---
 
-*Are we at "good enough" yet?*
-
-*First published May 20, 2025 on [The Relta blog here](https://medium.com/@aazo11/on-the-accuracy-of-on-device-llms-34fd6cc420b5)*
+*Originally published on [the Relta blog](https://medium.com/@aazo11/on-the-accuracy-of-on-device-llms-34fd6cc420b5)*
 
 ![Title image one robot learning from another](./title_image.webp)
 
