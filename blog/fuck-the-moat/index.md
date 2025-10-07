@@ -36,7 +36,8 @@ creating a data flywheel that improved the product with usage. No matter how muc
 
 ## Types of Moats in AI
 
-There are many types of moats: brand, economies of scale, data flywheels, high switching costs, regulatory barriers and patents, talent, etc. It is still too early to say which moats will prove to be durable for AI native businesses: people don't even agree whether [the model is the product](https://www.youtube.com/watch?v=4dUFIRj-BWo), or a [commodity.](https://the-decoder.com/microsoft-ceo-satya-nadella-says-ai-models-are-getting-commoditized/?utm_source=chatgpt.com).
+There are many types of moats: brand, economies of scale, data flywheels, high switching costs, regulatory barriers and patents, talent, etc. It is still too early to say which moats will prove to be durable for AI native businesses: people don't 
+even agree whether [the model is the product](https://www.youtube.com/watch?v=4dUFIRj-BWo), or a [commodity.](https://the-decoder.com/microsoft-ceo-satya-nadella-says-ai-models-are-getting-commoditized/?utm_source=chatgpt.com)
 However it seems there are differing moats emerging for AI Infra (foundational lab) vs Applied AI companies. On the AI Infra side, the major labs are trying to build moats around [economies of scale](https://openai.com/index/five-new-stargate-sites/) and [talent](https://www.nytimes.com/2025/07/31/technology/ai-researchers-nba-stars.html).
 Whereas on the Applied AI side it seems brand and switching costs related to long term memory and owning customer context seem to be emerging. 
 

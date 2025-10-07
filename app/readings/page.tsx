@@ -51,19 +51,19 @@ export default function ReadingsPage() {
             <p className="post-date">Kurt Vonnegut</p>
           </li>
           <li>
-            <a href="https://www.goodreads.com/book/show/63032.The_Savage_Detectives" target="_blank" rel="noopener noreferrer">The Savage Detectives</a>
+            <a href="https://www.goodreads.com/book/show/63033.The_Savage_Detectives" target="_blank" rel="noopener noreferrer">The Savage Detectives</a>
             <p className="post-date">Roberto Bolaño</p>
           </li>
           <li>
-            <a href="https://www.goodreads.com/book/show/50489427-when-we-cease-to-understand-the-world" target="_blank" rel="noopener noreferrer">When We Cease to Understand The World</a>
+            <a href="https://www.goodreads.com/book/show/62069739-when-we-cease-to-understand-the-world" target="_blank" rel="noopener noreferrer">When We Cease to Understand The World</a>
             <p className="post-date">Benjamin Labatut</p>
           </li>
           <li>
-            <a href="https://www.goodreads.com/book/show/61535399-the-maniac" target="_blank" rel="noopener noreferrer">The Maniac</a>
+            <a href="https://www.goodreads.com/book/show/75665931-the-maniac" target="_blank" rel="noopener noreferrer">The Maniac</a>
             <p className="post-date">Benjamin Labatut</p>
           </li>
           <li>
-            <a href="https://www.goodreads.com/book/show/6332964-ablutions" target="_blank" rel="noopener noreferrer">Ablutions</a>
+            <a href="https://www.goodreads.com/book/show/5291478-ablutions" target="_blank" rel="noopener noreferrer">Ablutions</a>
             <p className="post-date">Patrick deWitt</p>
           </li>
           <li>
