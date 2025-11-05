@@ -22,7 +22,7 @@ they tell your story before you even open it to show a demo.
 ## Beautiful craftsmanship
 
 Every programming language encodes a set of values.
-Spend enough time building in one, and those values shape your sense of taste: what you optimize for, what you tolerate, what you find ugly.
+Spend enough time building in one, and those values shape your sense of taste. What you optimize for, what you tolerate, what you find ugly.
 
 When engineering managers talk about “culture fit,” they’re often circling this idea:
 does this person’s taste align with how we build things here?
@@ -70,7 +70,8 @@ They’re trying to understand the tribe that person identifies with, and whethe
 
 That tribe says more than knowledge of a library, linter rule or test framework ever could.
 
-In a world where AI systems can translate ideas into code across any language, taste becomes the more important filter for choosing teammates.. 
+In a world where AI systems can translate ideas into code across any language, 
+taste becomes the more important filter for choosing teammates.
 
 Programming languages may fade into invisible layers between us and our agents.
 But their ethos will outlive them. They’ve been quietly training us all along. 
