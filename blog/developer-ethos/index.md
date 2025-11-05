@@ -56,6 +56,7 @@ fn word_count(text: &str) -> HashMap<String, usize> {
 }
 
 ```
+
 Every allocation is explicit. Resource usage is tightly controlled. Nothing is left to chance.
 
 Sure, these are toy examples. Python and Rust were built for different kinds of work.
