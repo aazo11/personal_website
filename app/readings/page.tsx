@@ -47,6 +47,10 @@ export default function ReadingsPage() {
         <h3>Books</h3>
         <ul>
           <li>
+            <a href="https://www.goodreads.com/book/show/31196.The_Razor_s_Edge" target="_blank" rel="noopener noreferrer">The Razor's Edge</a>
+            <p className="post-date">W. Somerset Maugham</p>
+            </li>
+          <li>
             <a href="https://www.goodreads.com/book/show/4982.The_Sirens_of_Titan" target="_blank" rel="noopener noreferrer">The Sirens of Titan</a>
             <p className="post-date">Kurt Vonnegut</p>
           </li>
