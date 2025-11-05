@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import '../styles/globals.css'
 import { LayoutWithTheme } from './components/LayoutWithTheme'
 import { Navigation } from './components/Navigation'
+import { Analytics } from '@vercel/analytics/react'
 
 export const metadata: Metadata = {
   title: 'Amir A. Zohrenejad personal page',
@@ -36,6 +37,7 @@ export default function RootLayout({
           <Navigation />
           {children}
         </LayoutWithTheme>
+        <Analytics />
       </body>
     </html>
   )
