@@ -172,7 +172,8 @@ article img {
 
 article img[alt*="Title image"], 
 article img[alt*="title image"],
-article img[alt*="build a moat"] {
+article img[alt*="build a moat"],
+article img[alt*="Language as proxy for taste"] {
   max-height: 300px;
   width: auto;
   object-fit: contain;
@@ -186,7 +187,8 @@ article img[alt*="build a moat"] {
   
   article img[alt*="Title image"], 
   article img[alt*="title image"],
-  article img[alt*="build a moat"] {
+  article img[alt*="build a moat"],
+  article img[alt*="Language as proxy for taste"] {
     max-height: 500px;
   }
 }

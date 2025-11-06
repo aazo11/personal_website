@@ -1,7 +1,10 @@
 ---
 title: "Language as proxy for taste"
 date: "2025-11-04"
+featuredImage: "/blog/developer-ethos/hero_image_language_taste.png"
 ---
+
+![Language as proxy for taste](hero_image_language_taste.png)
 
 Most developers agree that code will be increasingly written by agents.
 If that’s true, then familiarity with a specific programming language's ecosystem will stop being a criteria for hiring software developers.

@@ -35,6 +35,11 @@ export default function InvestmentsPage() {
 		url:"https://heavybit.com",
 		involvement: Involvement.LP
 	},
+	{
+		name:"Orange Collective",
+		url:"https://www.orangecollective.vc",
+		involvement: Involvement.LP
+	},
     {
       name: "Halluminate",
       url: "https://halluminate.ai",
