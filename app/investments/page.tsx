@@ -56,11 +56,6 @@ export default function InvestmentsPage() {
       involvement:Involvement.Angel
     },
     {
-      name: "Tailscale",
-      url: "https://tailscale.com",      	  
-      involvement:Involvement.Angel
-    },
-    {
       name: "Brackett AI",
       url: "https://brackett.ai",
       involvement:Involvement.Board
