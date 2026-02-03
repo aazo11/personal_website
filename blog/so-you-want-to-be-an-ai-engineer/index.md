@@ -26,9 +26,9 @@ The technical positions at the labs broadly fall under the following categories:
 In other words, since the "Applications" orgs at these companies are focused on leveraging advances in the foundational models, 
 all the engineers on those teams are Applied AI Engineers.
 
-## AI engineers are mainstream
+## The role has gone main street
 
-The AI engineer role is very common outside pure play tech companies. I imagine these companies want to "leverage AI" or "add AI" to their products and services, don't have
+A lot of companies that are not pure play tech are hiring AI engineers. I imagine these companies want to "leverage AI" or "add AI" to their products and services, don't have
 the know-how in-house and are bringing on AI engineers to help them do it. For example:
 
 - **Law firms** - Morrison & Foerster is hiring Senior AI Engineers to build their generative AI platform
@@ -36,9 +36,9 @@ the know-how in-house and are bringing on AI engineers to help them do it. For e
 - **Defense contractors** - Booz Allen wants AI Engineers for national security applications
 - **Consulting giants** - Accenture and Salesforce have lots of open positions, probably to staff the same non-tech companies with their "AI initiatives"
 
-When a 100-year-old law firm is hiring for a role, the category has gone mainstream.
+A 100-year-old law firm is hiring AI engineers in house...
 
-## What the market actually wants
+## Keywords to get past the AI screening for your AI job
 
 Looking at the skills the 31 job postings are asking for.
 
@@ -74,11 +74,12 @@ Here's what's *not* emphasized in the job postings: PyTorch and TensorFlow. Trad
 
 ![Agent Smith](Agent-Smith-replicated.avif)
 
-A whopping 71% of postings explicitly mention "agents" or "agentic workflows." It's clear that the industry has moved beyond simple chatbots. Companies want engineers who can build autonomous systems that reason and take actions.
+A whopping 71% of postings explicitly mention "agents" or "agentic workflows." It's clear that the industry has moved beyond simple chatbots, or at least they think they have. 
+
 
 RAG (Retrieval Augmented Generation) shows up in 29% of postings - and it's implied in almost every other one.
 
-MCP (Model Context Protocol) is already showing up in 16% of postings. Hopefully it will go away soon.
+MCP (Model Context Protocol) is in 16% of postings. Hopefully it will go away soon and be replaced with CLI experts. Just [kidding.](https://cra.mr/context-management-and-mcp)
 
 
 ## Evals
