@@ -47,9 +47,25 @@ export default function ReadingsPage() {
         <h3>Books</h3>
         <ul>
           <li>
+            <a href="https://www.goodreads.com/book/show/16690.The_Moon_Is_a_Harsh_Mistress" target="_blank" rel="noopener noreferrer">The Moon Is a Harsh Mistress</a>
+            <p className="post-date">Robert A. Heinlein</p>
+          </li>
+          <li>
+            <a href="https://www.goodreads.com/book/show/197239530-medusa-of-the-roses" target="_blank" rel="noopener noreferrer">Medusa of the Roses</a>
+            <p className="post-date">Navid Sinaki</p>
+          </li>
+          <li>
+            <a href="https://www.goodreads.com/book/show/10249013-bismarck" target="_blank" rel="noopener noreferrer">Bismarck: A Life</a>
+            <p className="post-date">Jonathan Steinberg</p>
+          </li>
+          <li>
+            <a href="https://www.goodreads.com/book/show/54870256-there-is-no-antimemetics-division" target="_blank" rel="noopener noreferrer">There Is No Antimemetics Division</a>
+            <p className="post-date">qntm</p>
+          </li>
+          <li>
             <a href="https://www.goodreads.com/book/show/31196.The_Razor_s_Edge" target="_blank" rel="noopener noreferrer">The Razor's Edge</a>
             <p className="post-date">W. Somerset Maugham</p>
-            </li>
+          </li>
           <li>
             <a href="https://www.goodreads.com/book/show/4982.The_Sirens_of_Titan" target="_blank" rel="noopener noreferrer">The Sirens of Titan</a>
             <p className="post-date">Kurt Vonnegut</p>

@@ -170,14 +170,22 @@ article img {
   object-fit: contain;
 }
 
-article img[alt*="Title image"], 
+article img[alt*="Title image"],
 article img[alt*="title image"],
 article img[alt*="build a moat"],
-article img[alt*="Language as proxy for taste"] {
+article img[alt*="Language as proxy for taste"],
+article img[alt*="So you want to be an AI engineer"] {
   max-height: 300px;
   width: auto;
   object-fit: contain;
   margin: 20px 0;
+}
+
+article img[alt*="Agent Smith"] {
+  max-height: 250px;
+  width: auto;
+  object-fit: contain;
+  margin: 15px 0;
 }
 
 @media (min-width: 768px) {
@@ -185,11 +193,16 @@ article img[alt*="Language as proxy for taste"] {
     max-width: 700px;
   }
   
-  article img[alt*="Title image"], 
+  article img[alt*="Title image"],
   article img[alt*="title image"],
   article img[alt*="build a moat"],
-  article img[alt*="Language as proxy for taste"] {
+  article img[alt*="Language as proxy for taste"],
+  article img[alt*="So you want to be an AI engineer"] {
     max-height: 500px;
+  }
+
+  article img[alt*="Agent Smith"] {
+    max-height: 300px;
   }
 }
 
