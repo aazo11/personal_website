@@ -11,7 +11,7 @@ The "AI Engineer" job title is a recent invention, and companies are hiring a lo
 I've generally assumed an AI engineer is someone who can build high quality software applications that leverage LLMs at runtime. 
 In other words, folks who do applied AI. I decided to validate that assumption by talking with a few folks in the space and scraping some job listings to build a better mental model of the job responsibilities and requirements. 
 
-The analysis below is from 31 job postings at 21 companies. The raw data is shared [here](/blog/so-you-want-to-be-an-ai-engineer/data/ai-engineer-jobs.json).  
+The analysis below is from 31 job postings at 21 companies. The raw data is shared [here](/data/ai-engineer-jobs.json).  
 
 ## AI labs do not have AI Engineers
 
