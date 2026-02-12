@@ -27,6 +27,10 @@ export default function ReadingsPage() {
         <h3>Papers</h3>
         <ul>
           <li>
+            <a href="https://arxiv.org/pdf/2601.19897" target="_blank" rel="noopener noreferrer">Self-Distillation Enables Continual Learning</a>
+            <p className="post-date">Shenfeld, Damani et al.</p>
+          </li>
+          <li>
             <a href="https://arxiv.org/pdf/2409.08273" target="_blank" rel="noopener noreferrer">Hand-Object Interaction Pretraining from Videos</a>
             <p className="post-date">Singh, Loquercio et al.</p>
           </li>
