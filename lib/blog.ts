@@ -9,6 +9,7 @@ const blogDirectory = path.join(process.cwd(), 'blog')
 export interface BlogPost {
   slug: string
   title: string
+  subtitle?: string
   date: string
   content: string
   contentHtml?: string
@@ -68,6 +69,7 @@ export function getBlogPostBySlug(slug: string): BlogPost | null {
   return {
     slug: slug,
     title: data.title || slug,
+    subtitle: data.subtitle,
     date: data.date || '',
     content: processedContent,
     summary: summary,

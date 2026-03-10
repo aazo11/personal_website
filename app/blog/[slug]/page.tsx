@@ -57,6 +57,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     <main>
       <article>
         <h1>{post.title}</h1>
+        {post.subtitle && <p className="post-subtitle">{post.subtitle}</p>}
         {post.date && <p className="post-date">Published: {post.date}</p>}
         <div 
           className="section"

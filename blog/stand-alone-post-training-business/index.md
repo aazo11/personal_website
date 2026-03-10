@@ -18,7 +18,7 @@ focused on model training. Of those, one (Mosaic) was acquired, one (Cerebras) i
 So, **is RL/post-training infrastructure a venture-scale category by itself?** Or should we think of it as a feature
 for inference providers and a workflow for the makers of foundational models? 
 
-## RL is Already Big Business
+## ًRL is Already Big Business
 
 Billions are already being spent on RL:
 - Mercor claimed to be at $500M of annual revenue in September 2025
@@ -67,7 +67,7 @@ Yes, but it won't look like inference.
 
 The inference providers won because they solved an infrastructure problem: serve models fast, reliably, and at scale. Capital and good engineering get you there. But a standalone RL business cannot win on speed or scalability alone. The bottleneck isn't infrastructure, it's the algorithms and the complex data pipelines needed to see value from them.
 
-A viable RL company needs to deliver something fundamentally new: **continual learning** from on-policy RL. Any such service will need to:
+A viable RL company needs to deliver something fundamentally new: **continual learning** from on-policy post-training. Any such service will need to:
 1. Include pipelines that synthesize RL environments from model outputs
 2. Automatically build (or at least propose) reward signals and verification 
 3. Update model weights and biases in the background with little human intervention.
