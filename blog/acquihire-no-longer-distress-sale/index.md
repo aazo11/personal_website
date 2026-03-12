@@ -61,13 +61,13 @@ Traditionally, acquisitions would fall into one of four categories
 Mega-acquihires get a lot of press attention because they imply companies are paying numbers once reserved for elite athletes to hire engineers.
 
 But when you look closely, these deals are not all the same. They fall into three categories:
-1. **Normal acquihires** — where sophisticated investors are finding soft landings for companies that raised too much money.
+1. **Normal acquihires** — the headline number is large, but not as a multiple of the amount raised. The structure is classic acqui-hire at a time investors are plowing in money into AI startups.
 2. **Team + Tech acquisitions** — the acquirer believes they're buying into a market that's about to be worth trillions.
-3. **Whatever Meta Superintelligence Labs is doing** — ¯\\\_(ツ)\_/¯
+3. **Elite athlete contracts** — Meta paying whatever it takes to put the best talent on the roster, regardless of whether the deal makes traditional M&A sense.
 
 ### DeepMind → Google (2014): Team + Tech
 
-Google's purchase of DeepMind in 2014 was arguably the first mega-acquihire. But this was really a team + tech deal. 
+Google's purchase of DeepMind in 2014 was arguably the first mega-acquihire. But I think this was really a team + tech deal. 
 DeepMind had made genuine breakthroughs combining reinforcement learning and neural networks. 
 The company had no product and little revenue, but Demis Hassabis, Mustafa Suleyman, 
 and Shane Legg had clearly built something that went on to change the world. 
@@ -101,12 +101,16 @@ Google paid a premium to license tech and bring on a team with expertise in a do
 
 ![AI code generation becoming the dominant tag on Stack Overflow](programming-dominant-tag.webp)
 
-### Scale AI → Meta: ¯\\\_(ツ)\_/¯
+### Meta (Scale AI, NFDG): Paying Elite Athlete Money for Talent
 
+Meta's AI acquisitions don't fit neatly into either category. They're closest to what happens in professional sports: you pay whatever it costs to get the best players on your roster.
 
+Take the Scale AI deal—a 49% stake at a $14B valuation. Scale has real revenue (reportedly over $1B annually) and a real product in data labeling and RLHF infrastructure. But Meta isn't buying Scale for the labeling business. The real asset is the team that understands how to build infrastructure for training frontier models. Alexandr Wang and his team have been in the loop with every major lab. They know what works. At a time when Meta is spending $65B+ annually on AI infrastructure, paying $7B for that institutional knowledge starts to look like a rounding error.
 
+The NFDG deal is even more telling. Meta brought on a research team with deep expertise in next-generation architecture optimizations. No product, no revenue—just people who understand problems that will matter in 18 months. This is a franchise paying max contracts to free agents before the salary cap kicks in.
 
-### NFDG → Meta: ¯\\\_(ツ)\_/¯
+Meta is treating AI talent the way the Yankees treat sluggers or PSG treats strikers: the price tag doesn't need to make financial sense on a spreadsheet if you believe winning the AI race is existential. When you're spending $65B a year on infrastructure, overpaying for the few hundred people who can make that infrastructure sing is the rational move.
+
 
  
 ### io.net/OpenClaw → OpenAI (2025): Team + Tech
@@ -119,16 +123,20 @@ As OpenAI looks beyond chatbots toward agents that can act in the real world, th
 
 Despite the hype, most mega-acquihires are either:
 1. **Normal acquihires** where sophisticated investors are finding soft landings for companies that raised too much money, or
-2. **Team + tech deals** where the acquirer believes they're buying into a market that's about to be worth trillions
+2. **Team + tech deals** where the acquirer believes they're buying into a market that's about to be worth trillions, or
+3. **Elite athlete contracts** where a deep-pocketed company pays whatever it takes to lock up the best talent, financial logic be damned
 
-The numbers are big because this is a once-in-a-generation technology shift and the players have unlimited pockets. But the underlying mechanics—buy talent, buy technology, find exits for struggling companies—are the same as they've always been. What's changed is the scale of the opportunity, and therefore the scale of the checks.
+The numbers are big because this is a once-in-a-generation technology shift and the players have unlimited pockets. But the underlying mechanics—buy talent, buy technology, find exits for struggling companies—are the same as they've always been. What's changed is the scale of the opportunity, and therefore the scale of the checks. And in Meta's case, the willingness to pay superstar money for superstar people.
 
 
 ## Why?
 
-The major labs are acting like AGI is imminent. In that race, the scarcest resource isn't compute or data—it's the small number of people who truly understand how to build these systems. The engineers who can squeeze out an extra percentage point of training efficiency. The researchers with intuition about why a model is behaving strangely. Call them GPU whisperers. There are maybe a few thousand of them in the world, and every major lab wants them.
+The major labs are acting like AGI is imminent. In that race, the scarcest resource isn't compute or data—it's the small number of people who truly understand how to build these systems. The engineers who can squeeze out an extra percentage point of training efficiency. The researchers with intuition about why a model is behaving strangely. 
+Call them GPU whisperers. There are maybe a few thousand of them in the world, and every major lab wants them.
 
-Here's the uncomfortable truth: the codebase doesn't matter that much anymore. Whatever software your AI startup has built, a talented team can probably replicate it in months. The moat isn't the code—it's the people who wrote it and the tacit knowledge in their heads.
+Here's the uncomfortable truth: the codebase doesn't matter that much anymore. 
+Whatever software your AI startup has built, a talented team can probably replicate it in months. 
+The moat isn't the code—it's the people who wrote it and the tacit knowledge in their heads.
 
 ## Misaligned Incentives
 
