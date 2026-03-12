@@ -58,20 +58,19 @@ Traditionally, acquisitions would fall into one of four categories
 
 ## The mega-acquihire
 
-Mega-acquihires get a lot of press attention because they imply 
-companies are paying numbers once reserved for elite atheletes to hire engineers. 
-   
-But when you look closely, these deals are not all the same. They fall into two categories: 
-1. **Normal acquihires** -- where sophisticated investors are finding soft landings for companies that raised too much money. 
-2. **Team + Tech acquisitions** -- the acquirer believes they're buying into a market that's about to be worth trillions.    
-3. **Whatever Meta Superintelligence labs is doing** -- ¯\\\_(ツ)\_/¯
+Mega-acquihires get a lot of press attention because they imply companies are paying numbers once reserved for elite athletes to hire engineers.
+
+But when you look closely, these deals are not all the same. They fall into three categories:
+1. **Normal acquihires** — where sophisticated investors are finding soft landings for companies that raised too much money.
+2. **Team + Tech acquisitions** — the acquirer believes they're buying into a market that's about to be worth trillions.
+3. **Whatever Meta Superintelligence Labs is doing** — ¯\\\_(ツ)\_/¯
 
 ### DeepMind → Google (2014): Team + Tech
 
 Google's purchase of DeepMind in 2014 was arguably the first mega-acquihire. But this was really a team + tech deal. 
 DeepMind had made genuine breakthroughs combining reinforcement learning and neural networks. 
 The company had no product and little revenue, but Demis Hassabis, Mustafa Suleyman, 
-and Shane Legg had clearly built something that went on to  change the world. 
+and Shane Legg had clearly built something that went on to change the world. 
 Google paid over $500M—unheard of at the time—because they were buying both the people *and* the technology 
 they'd created. 
 In hindsight, this was a bet that paid off.
@@ -96,10 +95,9 @@ Acquihire mechanics, just with larger checks.
 
 ### Cognition/Windsurf → Google (2025): Team + Tech
 
-This is not a normal acquihire with big numbers. Google paid $2.4B while Windsurf had raised $243M. Looking back in March 2026, 
-betting on AI codegen in Q2 2025 was an incredingly well timed bet as codegen broke out as the dominant AI use case in the subsequent year.
+This is not a normal acquihire with big numbers. Google paid $2.4B while Windsurf had raised $243M. Looking back in March 2026, betting on AI codegen in Q2 2025 was an incredibly well-timed bet as codegen broke out as the dominant AI use case in the subsequent year.
 
-Google paid a lot to licesne tech and bring on a team with expertise in a domain that subsequently exploded.  
+Google paid a premium to license tech and bring on a team with expertise in a domain that subsequently exploded.  
 
 ![AI code generation becoming the dominant tag on Stack Overflow](programming-dominant-tag.webp)
 
@@ -128,44 +126,22 @@ The numbers are big because this is a once-in-a-generation technology shift and 
 
 ## Why?
 
-There's a feeling in the industry that we are in a race to AGI. Whether you believe that timeline is 2 years or 20, the major labs are acting like it's imminent. And in that race, the scarcest resource isn't compute or data—it's the small number of people who truly understand how to build these systems.
+The major labs are acting like AGI is imminent. In that race, the scarcest resource isn't compute or data—it's the small number of people who truly understand how to build these systems. The engineers who can squeeze out an extra percentage point of training efficiency. The researchers with intuition about why a model is behaving strangely. Call them GPU whisperers. There are maybe a few thousand of them in the world, and every major lab wants them.
 
-The engineers who can optimize a training run to squeeze out an extra percentage point of efficiency. The researchers who have intuition about why a model is behaving strangely. The infrastructure leads who can keep a thousand GPUs humming in concert. Call them GPU whisperers. There are maybe a few thousand of them in the world, and every major lab wants them.
+Here's the uncomfortable truth: the codebase doesn't matter that much anymore. Whatever software your AI startup has built, a talented team can probably replicate it in months. The moat isn't the code—it's the people who wrote it and the tacit knowledge in their heads.
 
-Here's the uncomfortable truth: the codebase doesn't matter that much anymore. Whatever software your AI startup has built, a talented team with modern AI tools can probably replicate it in months, not years. The moat isn't the code. The moat is the people who wrote it and the tacit knowledge in their heads about what works and what doesn't.
+## Misaligned Incentives
 
-So when Amazon looks at Adept, they're not thinking "we need this agent framework." They're thinking "we need the people who figured out how to build an agent framework before anyone else did."
+These mega-acquihires create tension between founders, investors, and employees that the traditional playbook never anticipated.
 
-## Misaligned incentives
+In a classic acquihire, everyone loses together. The new structure is different. When Amazon pays $650M for Adept's "technology license" while hiring the founders with massive comp packages, most of that value flows to the team, not the cap table. Founders walk away wealthy while investors eat a loss.
 
-These mega-acquihires create a fundamental tension between founders and investors that the traditional startup playbook never anticipated.
+VCs have noticed. The NVCA has updated its model legal documents with provisions to block these "license and release" transactions—you can't license away the company's IP while taking a job at the acquirer without investor approval. Expect this language in every AI term sheet going forward.
 
-### VCs
-
-In a classic acquihire, everyone loses together. The company failed, investors get little, and founders get modest retention packages. It's not great, but the incentives are roughly aligned.
-
-The new structure is different. When Amazon pays $650M for Adept's "technology license" and simultaneously hires the founders with massive compensation packages, most of that value flows to the team, not the cap table. Founders can walk away wealthy while investors eat a loss on a company that raised hundreds of millions.
-
-VCs have noticed. The NVCA has updated its model legal documents with new protective provisions specifically designed to block these "license and release" transactions:
-
-> *"any license or transfer of the Corporation's (or its subsidiaries') intellectual property or assets to a third party in a material transaction or series of related transactions that, viewed in the aggregate, would be material and in connection with which such third party or its affiliates contemporaneously directly engages the services of any of the Corporation's senior executives in their individual capacities (including transactions commonly referred to as acquihires)"*
-
-In plain English: you can't license away the company's IP while simultaneously taking a job at the acquirer without investor approval. Expect to see this language in every AI term sheet going forward.
-
-### Employees
-
-The other losers are rank-and-file employees. In a traditional acquisition, everyone's equity gets bought out at the same price. In these structured deals, founders negotiate personal retention packages while the company's common stock may be worth little. The engineer who joined early and took a pay cut for equity can end up with nothing while their CEO walks away with $50M.
+Employees lose too. In a traditional acquisition, everyone's equity gets bought out at the same price. In these structured deals, founders negotiate personal retention packages while common stock may be worth nothing.
 
 ## So What?
 
-The conventional wisdom has always been: don't build a company to be acquired. Build a company to build a great business. Acquisitions should be a happy accident, not the goal.
+The conventional wisdom has always been: don't build a company to be acquired. That advice still holds—you're optimizing for a low-probability outcome that depends on someone else's priorities.
 
-That advice still holds. Building for acquisition is still a bad strategy—you're optimizing for a low-probability outcome that depends entirely on someone else's priorities.
-
-I think what has changed is that the race for AI domination is so hot that if your team can demonstrate the ability to build generational tech that results in step-change, then the big companies are willing to spend enormous amounts of money to bring you on.
-
-But here's the paradox of the AI era: even as we're told that AI will automate human jobs, the teams that build AI have never been more valuable. The scarcity of true AI talent means that even "failed" companies can generate enormous outcomes for their founders.
-
-This creates a strange new calculus for AI founders. You can raise $100M, fail to find product-market fit, and still walk away wealthier than founders who built profitable businesses in other sectors. The acquihire is no longer a consolation prize. For some, it's become the strategy.
-
-Whether that's good for innovation, for investors, or for the employees who join these companies is a different question. But it's the reality of the market we're in.
+But here's the paradox: even as AI is supposed to automate jobs, the teams that build AI have never been more valuable. You can raise $100M, fail to find product-market fit, and still walk away wealthier than founders who built profitable businesses in other sectors. The acquihire is no longer a consolation prize. For some, it's become the strategy.
