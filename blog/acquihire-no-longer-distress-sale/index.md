@@ -122,7 +122,7 @@ Yann LeCun has left and Alexandr Wang has also left.
 For comparison, Anthropic has made [3 acquisitions](https://chatgpt.com/share/e/69b2603e-75a0-8005-a6a4-b8c9538ff9e4) in the lifetime of the company.
 
 
-### io, OpenClaw → OpenAI (2025, 2026): ¯\\\_(ツ)\_/¯
+### LoveForm, OpenClaw → OpenAI (2025, 2026): ¯\\\_(ツ)\_/¯
 
 These are hard to categorize since we know very little about the io tech and the OpenClaw numbers are undisclosed. 
 My guess is these fall somewhere bwteen "Team + Tech" and "Elite Athlete" acquihire. Although, the [io announcement video](https://www.youtube.com/watch?v=J4r3Yth10SA) certainly gave 
@@ -135,8 +135,8 @@ My guess is these fall somewhere bwteen "Team + Tech" and "Elite Athlete" acquih
 
 Yes. A few trends are clear:
 
-1. As funding rounds get bigger, boards are able to navigate large acquihires for the AI talent. While not big outcomes, this sets floors and encourages future large funding rounds.
-2. A very few handful of companies (Meta, maybe OpenAI) are willing to pay elite athlete comp for AI talent
+1. As AI funding rounds have gotten larger, boards have been to navigate to large acquihires for the AI talent when the business has not taken off. While not big outcomes for investors, this helps set a floor on the investment outcome and encourages continued large funding rounds.
+2. A very few handful of companies (Meta, maybe OpenAI) are willing to pay elite athlete comp for AI talent.
 3. With the improvements of codegen tools, we can expect to see the line between "team" and "tech + team" blur for the best engineers. In other words, the codebase will have little IP value, as a few people can easily rebuild it.
 
 ## Misaligned incentives
