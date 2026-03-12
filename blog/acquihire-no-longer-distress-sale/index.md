@@ -1,7 +1,7 @@
 ---
 title: "The Acquihire Is No Longer A Distress Sale"
 subtitle: ""
-date: "2026-03-05"
+date: "2026-03-12"
 featuredImage: "/blog/acquihire-no-longer-distress-sale/gpu_whisperers.png"
 ---
 
