@@ -63,93 +63,103 @@ Mega-acquihires get a lot of press attention because they imply companies are pa
 But when you look closely, these deals are not all the same. They fall into three categories:
 1. **Normal acquihires** — the headline number is large, but not as a multiple of the amount raised. The structure is classic acqui-hire at a time investors are plowing in money into AI startups.
 2. **Team + Tech acquisitions** — the acquirer believes they're buying into a market that's about to be worth trillions.
-3. **Elite athlete contracts** — Meta paying whatever it takes to put the best talent on the roster, regardless of whether the deal makes traditional M&A sense.
+3. **Elite athlete contracts** — paying whatever it takes to put the best talent on the roster, regardless of whether the deal makes traditional M&A sense.
 
 ### DeepMind → Google (2014): Team + Tech
 
-Google's purchase of DeepMind in 2014 was arguably the first mega-acquihire. But I think this was really a team + tech deal. 
-DeepMind had made genuine breakthroughs combining reinforcement learning and neural networks. 
-The company had no product and little revenue, but Demis Hassabis, Mustafa Suleyman, 
-and Shane Legg had clearly built something that went on to change the world. 
-Google paid over $500M—unheard of at the time—because they were buying both the people *and* the technology 
-they'd created. 
-In hindsight, this was a bet that paid off.
+Google's purchase of DeepMind in 2014 was arguably the first mega-acquihire, although "team + tech" is the better label in my opinion. DeepMind had made genuine breakthroughs combining reinforcement learning and neural networks. The company had little revenue and no real product to speak of, but Demis Hassabis, Mustafa Suleyman, and Shane Legg had clearly built something that mattered. Google paid over $500M—an extraordinary number at the time—because it was buying both the people and the technical lead they had already created.
+
+In hindsight, this was a great bet. It was a very early, very large bet that a small research team had found one of the most important seams in computing.
 
 ### Inflection → Microsoft (2024): Normal Acquihire, Big Numbers
 
-Despite the headlines, Microsoft's "acquisition" of Inflection AI looks far more like a traditional acquihire than a mega-deal. 
-Yes, Microsoft paid roughly $650M for a "technology license" and hired the co-founders and research team. 
-But look at the structure: Inflection had raised $1.5B and their personalized chatbot Pi was clearly losing to ChatGPT. 
-Microsoft was already the largest investor. Reid Hoffman, a co-founder of Inflection, was already on Microsoft's board.
+Despite the headlines, Microsoft's "acquisition" of Inflection AI looks like a well-connected board navigating towards a soft landing.  
 
-The $650M went to the company, not the founders. Investors like Greylock reportedly made 1-1.5x on their capital—exactly what you'd expect from an acquihire soft landing. 
-The board found an exit for a company that wasn't going to win its market. 
-The numbers are big because $1.5B had been invested, but the *structure* is classic acquihire.
+Inflection had raised about $1.5B. Microsoft paid $650M directly to the company, 
+not to the founders. Investors like Greylock reportedly made [1x to 1.5x on](https://www.reuters.com/technology/microsoft-agreed-pay-inflection-650-mln-while-hiring-its-staff-information-2024-03-21/) their capital. 
+The flagship product (a chatbot called Pi) was clearly losing to ChatGPT, Microsoft was already the largest investor, 
+and Reid Hoffman was one of Inflection's co-founders and a Microsoft's board member.  
+
 
 ### Adept → Amazon (2024): Normal Acquihire
 
-Amazon's deal with Adept followed the Inflection template: ~$650M for technology licensing plus hiring the founding team sounds like a mega-deal,  
-but Adept had raised over $400M and their agent product hadn't found much traction. 
-This is another soft landing where investors got something back and founders got lucrative high profile jobs at Amazon. 
-Acquihire mechanics, just with larger checks.
+[Amazon's deal with Adept](https://www.semafor.com/article/08/02/2024/investors-in-adept-ai-will-be-paid-back-after-amazon-hires-startups-top-talent) followed the same template. 
+ The headlines are eye catching, but Adept had already raised more than $400M and its agent product had not found meaningful traction. From a distance it looked like a frontier AI talent coup. Up close it looked like another large soft landing: investors got their money back, the founders got high-profile roles, and Amazon got a team it wanted.
 
-### Cognition/Windsurf → Google (2025): Team + Tech
+It is the old acquihire playbook inflated by the amount of capital that has sloshed into AI. The boards can still navigate exits to help recoup their investment.
 
-This is not a normal acquihire with big numbers. Google paid $2.4B while Windsurf had raised $243M. Looking back in March 2026, betting on AI codegen in Q2 2025 was an incredibly well-timed bet as codegen broke out as the dominant AI use case in the subsequent year.
+### Windsurf → Google (2025): Team + Tech
 
-Google paid a premium to license tech and bring on a team with expertise in a domain that subsequently exploded.  
+Windsurf is where the modern structure starts to look different, but I would argue this is a "team + tech" deal. 
+Google paid $2.4B while Windsurf had raised about $243M. More importantly, the deal was not simply "company gets bought, team joins acquirer." Google hired the CEO and key researchers, licensed the technology, and effectively took the pieces it cared most about, while the remainder of the business later found another home.
+
+That is not a normal acquihire with big numbers. 
+It is a premium paid for a team that had deep expertise in one of the most important emerging categories in AI. Looking back from March 2026, it is hard to overstate how well timed that bet was. In the subsequent year, code generation broke out as the dominant AI use case, and Windsurf had a team with both product intuition and technical understanding in exactly the right place.
+
+Google was not rescuing a failed company. It was paying aggressively to bring the team and tech that exploded in the subsequent 9 months.
+
 
 ![AI code generation becoming the dominant tag on Stack Overflow](programming-dominant-tag.webp)
 
-### Meta (Scale AI, NFDG): Paying Elite Athlete Money for Talent
+### Scale AI, NFDG → Meta (2025): Paying Elite Athlete Money for Talent
 
-Meta's AI acquisitions don't fit neatly into either category. They're closest to what happens in professional sports: you pay whatever it costs to get the best players on your roster.
+Meta's AI acquisitions are truly a departure from anything that came before.
+The closest analogy is what happens in professional sports: the ultra rich teams pay whatever it costs to get the best players on your roster to win a championship ring.
 
-Take the Scale AI deal—a 49% stake at a $14B valuation. Scale has real revenue (reportedly over $1B annually) and a real product in data labeling and RLHF infrastructure. But Meta isn't buying Scale for the labeling business. The real asset is the team that understands how to build infrastructure for training frontier models. Alexandr Wang and his team have been in the loop with every major lab. They know what works. At a time when Meta is spending $65B+ annually on AI infrastructure, paying $7B for that institutional knowledge starts to look like a rounding error.
+Take the Scale AI deal—a 49% stake at a $14B valuation. Scale has real revenue (reportedly over $1B annually) and a real product in 
+data labeling and RLHF infrastructure. But Meta didn't buy Scale for the labeling business. It bought Scale to bring on Alexandr Wang.  
 
-The NFDG deal is even more telling. Meta brought on a research team with deep expertise in next-generation architecture optimizations. No product, no revenue—just people who understand problems that will matter in 18 months. This is a franchise paying max contracts to free agents before the salary cap kicks in.
+The NFDG deal is similar. Meta didn't buy them to make money on the NFDG portfolio. The deal was to bring on Nat Friedman and Daniel Gross. 
 
-Meta is treating AI talent the way the Yankees treat sluggers or PSG treats strikers: the price tag doesn't need to make financial sense on a spreadsheet if you believe winning the AI race is existential. When you're spending $65B a year on infrastructure, overpaying for the few hundred people who can make that infrastructure sing is the rational move.
+Meta is treating AI talent the way the Dodgers treat pitchers or PSG treats strikers.
+
+I imagine the thinking is that at a time when Meta is spending $65B+ annually on AI infrastructure, 
+why not pay a few billion more for talent? 
+
+So can you buy a championship in this game? Meta started 2025 with a clear open source model lead with the Llama family. It has now lost that lead to the Qwen and other models from the Chinese labs, 
+Yann LeCun has left and Alexandr Wang has also left.
+
+For comparison, Anthropic has made [3 acquisitions](https://chatgpt.com/share/e/69b2603e-75a0-8005-a6a4-b8c9538ff9e4) in the lifetime of the company.
 
 
+### io, OpenClaw → OpenAI (2025, 2026): ¯\\\_(ツ)\_/¯
+
+These are hard to categorize since we know very little about the io tech and the OpenClaw numbers are undisclosed. 
+My guess is these fall somewhere bwteen "Team + Tech" and "Elite Athlete" acquihire. Although, the [io announcement video](https://www.youtube.com/watch?v=J4r3Yth10SA) certainly gave 
+[The Decision](https://www.thewrap.com/espn-lebron-james-despicable-decision-19090/) on cringe factor.
  
-### io.net/OpenClaw → OpenAI (2025): Team + Tech
-
-OpenAI's acquisitions tell you where they think the bottlenecks are. 
-The OpenClaw deal brought in robotics expertise—founders who understand embodied AI and physical-world interaction. 
-As OpenAI looks beyond chatbots toward agents that can act in the real world, they need people who've built those systems before.
-
-### The Pattern
-
-Despite the hype, most mega-acquihires are either:
-1. **Normal acquihires** where sophisticated investors are finding soft landings for companies that raised too much money, or
-2. **Team + tech deals** where the acquirer believes they're buying into a market that's about to be worth trillions, or
-3. **Elite athlete contracts** where a deep-pocketed company pays whatever it takes to lock up the best talent, financial logic be damned
-
-The numbers are big because this is a once-in-a-generation technology shift and the players have unlimited pockets. But the underlying mechanics—buy talent, buy technology, find exits for struggling companies—are the same as they've always been. What's changed is the scale of the opportunity, and therefore the scale of the checks. And in Meta's case, the willingness to pay superstar money for superstar people.
 
 
-## Why?
 
-The major labs are acting like AGI is imminent. In that race, the scarcest resource isn't compute or data—it's the small number of people who truly understand how to build these systems. The engineers who can squeeze out an extra percentage point of training efficiency. The researchers with intuition about why a model is behaving strangely. 
-Call them GPU whisperers. There are maybe a few thousand of them in the world, and every major lab wants them.
+## So, are things changing?
 
-Here's the uncomfortable truth: the codebase doesn't matter that much anymore. 
-Whatever software your AI startup has built, a talented team can probably replicate it in months. 
-The moat isn't the code—it's the people who wrote it and the tacit knowledge in their heads.
+Yes. A few trends are clear:
 
-## Misaligned Incentives
+1. As funding rounds get bigger, boards are able to navigate large acquihires for the AI talent. While not big outcomes, this sets floors and encourages future large funding rounds.
+2. A very few handful of companies (Meta, maybe OpenAI) are willing to pay elite athlete comp for AI talent
+3. With the improvements of codegen tools, we can expect to see the line between "team" and "tech + team" blur for the best engineers. In other words, the codebase will have little IP value, as a few people can easily rebuild it.
 
-These mega-acquihires create tension between founders, investors, and employees that the traditional playbook never anticipated.
+## Misaligned incentives
 
-In a classic acquihire, everyone loses together. The new structure is different. When Amazon pays $650M for Adept's "technology license" while hiring the founders with massive comp packages, most of that value flows to the team, not the cap table. Founders walk away wealthy while investors eat a loss.
+These mega-acquihires create tension between founders, investors, and employees that the traditional startup playbook did not really anticipate.
 
-VCs have noticed. The NVCA has updated its model legal documents with provisions to block these "license and release" transactions—you can't license away the company's IP while taking a job at the acquirer without investor approval. Expect this language in every AI term sheet going forward.
+In a classic acquihire, everyone more or less lost together. The company did not work, the exit was modest, and there was not much ambiguity about what had happened. The newer structures are messier. If a large buyer pays hundreds of millions for a technology license while hiring the founders and key researchers into massive comp packages, a lot of the economic value can bypass the normal cap table logic. Founders may walk away in great shape while investors take a loss, or at best grind out a flat return. That is a very different emotional and financial outcome than a normal company sale.
 
-Employees lose too. In a traditional acquisition, everyone's equity gets bought out at the same price. In these structured deals, founders negotiate personal retention packages while common stock may be worth nothing.
+Investors have noticed, and tighter language is already being added to NVCA docs around 
+IP transfers, exclusive licenses, asset sales, and founder departures tied to employment offers 
+from strategic buyers. The point will not be to stop every deal but to prevent a scenario 
+where founders effectively sell while leaving the cap table behind. That concern is no longer theoretical.
 
-## So What?
+Employees are arguably in the worst position. They cannot insert tag-along rights into their employment packages. 
+AI teams are more valuable than ever, but the upside is not necessarily distributed evenly across those teams. Some people are being paid like franchise players. Others are discovering that being adjacent to rare talent is not the same thing as being treated like rare talent.
 
-The conventional wisdom has always been: don't build a company to be acquired. That advice still holds—you're optimizing for a low-probability outcome that depends on someone else's priorities.
+## So what?
 
-But here's the paradox: even as AI is supposed to automate jobs, the teams that build AI have never been more valuable. You can raise $100M, fail to find product-market fit, and still walk away wealthier than founders who built profitable businesses in other sectors. The acquihire is no longer a consolation prize. For some, it's become the strategy.
+The conventional wisdom has always been: do not build a company to be acquired. I think that advice still holds. 
+Most mega-acquihires are boards finding soft landings to recoup their large investment and will not lead to huge windfalls for the founders.
+It is too early to tell if the elite athelete acquihires were just a failed experiment at Meta. They certainly appear that way as of this writing.
+
+But AI has introduced a real paradox. At the exact moment we are being told AI will automate large swaths of knowledge work, certain knowledge workers are more valuable than ever. 
+And the dynamics are very beneficial to founders who fit in this category. You can easily raise large money, miss on product-market fit, and still end up producing one of the most valuable assets in the ecosystem: a team that knows how to build frontier systems together. 
+
+The acquihire is no longer just a consolation prize. In a few corners of AI, it is becoming its own category of outcome.
