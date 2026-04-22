@@ -188,6 +188,13 @@ article img[alt*="Agent Smith"] {
   margin: 15px 0;
 }
 
+article img[alt*="Economist"] {
+  width: 75%;
+  height: auto;
+  object-fit: contain;
+  margin: 20px 0 4px 0;
+}
+
 @media (min-width: 768px) {
   article img {
     max-width: 700px;
@@ -204,6 +211,7 @@ article img[alt*="Agent Smith"] {
   article img[alt*="Agent Smith"] {
     max-height: 300px;
   }
+
 }
 
 .terminal-prompt {
