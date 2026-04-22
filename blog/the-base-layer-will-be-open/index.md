@@ -1,5 +1,5 @@
 ---
-title: "The Base Layer Is Open"
+title: "The base layer will be open"
 subtitle: "Open weights models dominate outside the labs"
 date: "2026-04-21"
 ---
