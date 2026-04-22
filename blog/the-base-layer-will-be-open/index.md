@@ -48,29 +48,29 @@ on top of open weight models. Increasingly the stack looks like the following.
 ```
 AI Application Stack
 
-                     user / customer 💵
-                           |
+                      user / customer 💵
+                             |
                  +------------------------+
-                 |      DISTRIBUTION      | <- Very High Value
+                 |      Distribution      | <- Very High Value
                  +------------------------+
-                           |
+                             |
                  +------------------------+
-                 |        PRODUCT         |
+                 |        Product         |
                  +------------------------+
-                           |
+                             |
                  +------------------------+
                  |     Agent Harness      |
                  +------------------------+
-                           |
+                             |
                  +------------------------+
                  |     Post Training      | <- Very High Value
                  +------------------------+
-                           |
+                             |
                  +------------------------+
                  |   Open Weight Models   |
                  +------------------------+
-                           |
-                    Jensen Huang 💰 (collecting rent)
+                             |
+              Jensen Huang 💰 (collecting rent)
 ```
 
 This emerging stack reflects the fact that the AI ecosystem is maturing.
@@ -81,12 +81,12 @@ edit and reason about code in a real repository with real tools quickly, accurat
 Cursor now has built up a dataset from real world use over time which it can leverage to effectively post-train.
 Training a base model from scratch means paying to teach it basic reasoning and tool use all over again.
 Calling a frontier API means paying for superintelligence your product will never exercise.
-Taking an open base and RL'ing it on your corpus of coding data and environments is the only option that spends compute where it actually matters.
+Taking an open base and RL'ing it on your corpus of coding data and environments is the option that spends compute where it actually matters.
 
 
 
 ## Where Open Weights Are The Only Option
-The discussions so far have been about LLMs and application stacks built on top. It should be noted there are other areas, such as on-device language models
+The post has focused on LLMs and application stacks built on top. It should be noted there are other areas, such as on-device language models
 or Physical AI, where the only options are open weight models. I would argue this is the case because these markets are still very early and
 for all the players any progress will help all the ships rise. As these ecosystems mature, we can expect dynamics similar to LLMs to take shape.
 
