@@ -25,12 +25,7 @@ export default function InvestmentsPage() {
 	}
 
   const investments = [
-	{
-		name:"Unikraft",
-		url:"https://Unikraft.cloud",
-		involvement: Involvement.Board
-	},
-	{
+{
 		name:"Heavybit",
 		url:"https://heavybit.com",
 		involvement: Involvement.LP
@@ -40,12 +35,7 @@ export default function InvestmentsPage() {
 		url:"https://www.orangecollective.vc",
 		involvement: Involvement.LP
 	},
-    {
-      name: "Halluminate",
-      url: "https://halluminate.ai",
-      involvement:Involvement.Board
-    },
-    {
+{
       name: "assistant-ui",
       url: "https://www.assistant-ui.com",
       involvement:Involvement.Angel
@@ -55,13 +45,7 @@ export default function InvestmentsPage() {
       url: "https://www.humanlayer.dev",	  
       involvement:Involvement.Angel
     },
-    {
-      name: "Brackett AI",
-      url: "https://brackett.ai",
-      involvement:Involvement.Board
-
-    },
-    {
+{
       name: "Cartage",
       url: "https://www.cartage.ai",      	  
       involvement:Involvement.Angel
@@ -78,17 +62,29 @@ export default function InvestmentsPage() {
       url: "https://credibledata.com",
       involvement:Involvement.Angel
 
+    },
+    {
+      name: "Piris Labs",
+      url: "https://pirislabs.com",
+      involvement:Involvement.Angel
+    },
+    {
+      name: "Baseten",
+      url: "https://www.baseten.co",
+      involvement:Involvement.Angel
+    },
+    {
+      name: "Generationship",
+      url: "https://generationship.vc",
+      involvement:Involvement.LP
     }
   ];
 
   const lpInvestments = investments
     .filter(inv => inv.involvement === Involvement.LP)
     .sort((a, b) => a.name.localeCompare(b.name));
-  const boardInvestments = investments
-    .filter(inv => inv.involvement === Involvement.Board)
-    .sort((a, b) => a.name.localeCompare(b.name));
-  const angelInvestments = investments
-    .filter(inv => inv.involvement === Involvement.Angel)
+  const companyInvestments = investments
+    .filter(inv => inv.involvement === Involvement.Board || inv.involvement === Involvement.Angel)
     .sort((a, b) => a.name.localeCompare(b.name));
 
   return (
@@ -108,23 +104,10 @@ export default function InvestmentsPage() {
         </ul>
       </div>
 
-      <p>I am working closely with the founders of these companies</p>
-      <div className="section">
-        <ul>
-          {boardInvestments.map((company, index) => (
-            <li key={index}>
-              <a href={company.url} target="_blank" rel="noopener noreferrer">
-                {company.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
       <p>I am an investor in these companies</p>
       <div className="section">
         <ul>
-          {angelInvestments.map((company, index) => (
+          {companyInvestments.map((company, index) => (
             <li key={index}>
               <a href={company.url} target="_blank" rel="noopener noreferrer">
                 {company.name}
