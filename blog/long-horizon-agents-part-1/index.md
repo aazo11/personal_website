@@ -3,60 +3,87 @@ title: "long horizon agents, part 1: the end of prompt-and-response"
 date: "2026-07-15"
 ---
 
-## The Prompt Is a Crutch
+## How work gets done
 
-Every mainstream AI product today works the same way. You type something. The model responds. You type again. This is the interaction model that took us from GPT-3 demos to a [$300B industry](https://www.bloomberg.com/news/articles/2026-06-15/generative-ai-market-size-forecast), and it is already becoming the bottleneck.
+Every organization has goals. In larger organizations, each team or function has its own sub-goals which align with the broader organizational goals. Individual team members have goals which help their team hit its goals.
 
-The work that matters — debugging a production outage, migrating a codebase, onboarding a new data pipeline — is not a single prompt. It is hours of branching decisions, tool calls, intermediate verification, and context that compounds over time. Asking a human to sit there and co-pilot every step defeats the point.
+At the smallest level, individual team members break down their goals into weekly, daily and hourly tasks, then apply their intelligence, expertise and tools to completing them. At every level of the organization, outcomes are compared against goals and course corrections are made.
 
-The next phase is background agents. Agents that you delegate to, that run for hours or days, that call tools and make decisions autonomously, and that come back with results or pause to ask you a question when they're stuck. Less chatbot, more junior employee you onboard and turn loose on a project.
+Powered by language models and the harnesses around them, agents can now complete many of the same knowledge work tasks as humans. But rarely can they replace an actual human in the workplace.
 
-This is not a prediction. It is already happening. Anthropic's Claude Code runs headless in CI. OpenAI's Codex operates as a background worker that takes a ticket and returns a PR. Cursor shipped [background agents](https://www.cursor.com/blog/background-agents) that spin up cloud VMs and work while you do other things. The interaction model is shifting from synchronous conversation to asynchronous delegation.
+If you hired a junior employee, you might assign them a mentor who checked in daily and closely supervised their work.
+If they still needed the same level of support three months later, you would probably fire them.
 
-The question is no longer whether agents will become long-horizon and autonomous. It is what breaks when they do.
+Most agentic AI applications today require constant human supervision. In fact, most still use the prompt-response format of chatbots. Prompt-response applications simply automate tasks: they are closer to stochastic calculators than entities that can independently deliver on organizational goals. The human still owns the goal, breaks it into tasks, gives the model context for each task, checks the output and decides what happens next. Even when a task is broken into subtasks that use tools and skills across multiple steps, the human still manages the process.
 
-## The Memory Wall
+For agents to be more than tools, they need to be able to:
 
-The most immediate failure mode has a name: the [memory wall](https://www.mindstudio.ai/blog/ai-agent-memory-wall-long-running-jobs).
+1. **Internalize goals** — plan across long time horizons, break goals into sub-goals and tasks, observe outcomes and course-correct.
+2. **Continually learn** — learn from experience and escalate only when necessary.
 
-Every LLM has a context window. Today's frontier models offer 128K–200K tokens, which sounds like a lot until your agent is 90 minutes into a task, has called 40 tools, and accumulated a transcript full of API responses, error traces, and intermediate reasoning. The context window is not a hard drive. It is working memory, and it degrades before it overflows.
+## From completing tasks to owning outcomes
 
-The memory wall operates on three levels:
+A task has a clear input and output. A tool can help complete it. But intelligent humans are not hired simply to complete a collection of tasks. They are given an area of responsibility and expected to deliver an outcome.
 
-**Hard overflow.** The agent literally runs out of tokens. The transcript is too long. The run crashes or the model starts dropping information. This is the most obvious failure and the easiest to detect.
+A task ends when an output is produced. Ownership persists until an outcome is achieved.
 
-**Soft degradation.** The model still has room, but critical instructions from the original prompt are now buried under pages of tool output. This is the "[lost in the middle](https://arxiv.org/abs/2307.03172)" problem applied to agents. The agent forgets constraints, ignores earlier decisions, and starts drifting. You asked it to refactor without changing the public API. Fifty tool calls later, it changes the public API.
+Take a software engineer. Refactoring a module or fixing compile-time errors are tasks. Making sure a SaaS product can scale with the business is an outcome. The engineer needs to understand the existing architecture, decide what needs to change, weigh tradeoffs, sequence the work and adjust the plan when they find something unexpected.
 
-**Temporal drift.** Over time, the agent's understanding of its own goal shifts. Each new piece of context slightly reweights what it thinks it is doing. This is subtle and hard to catch because the agent's outputs remain locally coherent — each individual step looks reasonable, but the trajectory has wandered.
+Now take a sales rep. Writing a follow-up email to a prospect is a task and logging it in the CRM is a task. Generating $500K in qualified pipeline from a new territory is an outcome. The rep needs to identify accounts, find the right people, personalize outreach, handle objections and learn which messages are working. If the pipeline is not growing, they need to diagnose why and change their approach or maybe even communicate internally that the issue is with marketing, engineering or product teams.
 
-Bigger context windows help with hard overflow. They do nothing for soft degradation or temporal drift. These are architectural problems, not parameter problems.
+This learning is central to outcome ownership. Each result changes how the person understands the problem and what they do next. Over time, they build up context, develop judgment and require less instruction.
 
-## Tasks vs. Jobs
+Current agents are very good at completing tasks, especially when the output can be verified immediately. They are much worse at internalizing a goal, judging whether they are making progress and learning from outcomes without a human managing the loop.
 
-There is a useful distinction between tasks and jobs. A task is bounded: clear input, predictable scope, a few steps. Summarize this document. Write a unit test for this function. Fix this type error. Current agents are excellent at tasks.
+The difference is not just duration or the number of steps. It is who owns the outcome.
 
-A job is different. Audit the entire codebase for security vulnerabilities. Process a month of customer support tickets and surface patterns. Migrate from REST to GraphQL. Jobs involve hundreds of steps, conditional branching, accumulated state, and they span hours or days.
+This is why coding has become the first real market for agents. Code gives the model tools, a structured environment and lots of ways to check its own work. It can edit a file, run the tests, inspect the error and try again. Even here, the dominant products are only beginning to move beyond the prompt-response loop. OpenAI describes Codex as a [command center for multiple agents](https://openai.com/index/introducing-the-codex-app/), while [Cursor's background agents](https://cursor.com/blog/background-agents) run in remote environments and return code for review.
 
-Agents that ace benchmarks on tasks routinely fail at jobs. The failure modes compound: context overflow mid-run, instruction dilution as the transcript grows, errors that accumulate across intermediate steps, state loss on interruption, and what one team calls "[evaluation blindness](https://www.mindstudio.ai/blog/ai-agent-memory-wall-long-running-jobs)" — plausible-sounding outputs that are subtly wrong, produced by an agent that long ago lost the thread.
+The direction is clear. We are moving from sitting next to one agent and watching it work towards assigning work to many agents and checking in when they have something useful to show us.
 
-A [recent taxonomy of agentic AI faults](https://arxiv.org/html/2603.06847v1) cataloged 37 distinct failure categories across five architectural dimensions: cognition and orchestration, tool integration, context and memory, runtime environments, and system reliability. 83.8% of practitioners surveyed said the taxonomy matched failures they encounter in production. This is not a theoretical exercise. These failures are happening now, in real deployments, at scale.
+## Long horizon does not mean a long context window
 
-## The Compounding Error Problem
+The most common approach to making agents work longer has been to give the model more context. When the context window fills up, summarize the conversation and keep going.
 
-Anthropic's [guide to building agents](https://www.anthropic.com/research/building-effective-agents) includes a line that should be bolded and underlined: "The autonomous nature of agents means higher costs, and the potential for compounding errors."
+This helps, but it is not memory.
 
-In a prompt-response loop, the human catches errors after every turn. The feedback cycle is tight. In a background agent, there is no feedback cycle. The agent makes a wrong decision on step 12, and every subsequent step builds on that wrong decision. By step 50, the error is load-bearing. You cannot undo it without restarting the entire run.
+A context window is closer to an employee's desk than their brain. You can make the desk bigger, but eventually it fills with old documents, terminal output, half-finished plans and decisions whose reasoning has been forgotten. Important information does not need to fall out of the window to be lost. It can simply get buried.
 
-This is the trust problem. How do you verify the output of an agent that ran for six hours unsupervised? You cannot review a 200-step trace the way you review a pull request. And if you have to manually verify every step, you have not saved any time — you have just moved the work from "doing" to "reviewing," which is often harder.
+The longer an agent runs, the more decisions it needs to remember: what it tried, why it failed, what constraints the user gave it and which parts of the goal are still unfinished. Compressing all of that into a summary loses information. Keeping everything makes it harder for the model to find what matters.
 
-METR's research shows AI agent task duration [doubling roughly every seven months](https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/). In early 2025, frontier agents could handle one-hour tasks with reasonable reliability. By late 2026, we are looking at eight-hour workstreams. But reliability is not scaling at the same rate. The gap between what agents can attempt and what they can complete reliably is widening, not narrowing.
+Humans deal with this through more than memory. We use project plans, documents, calendars, source control, ticketing systems and coworkers. Our work is stored in the environment around us. Long-horizon agents will need to do the same.
 
-## The Infrastructure Gap
+## Reliability gets harder with every step
 
-The current infrastructure stack was built for the prompt-response era. API calls are stateless. Inference servers optimize for request throughput, not session continuity. Orchestration frameworks assume a human is in the loop. Monitoring tools show you latency and error rates, not "the agent has been running for three hours and is now doing something completely unrelated to the original task."
+Anthropic's guide to [building effective agents](https://www.anthropic.com/engineering/building-effective-agents) warns about the potential for compounding errors.
 
-A [survey of enterprise AI deployments](https://theconversation.com/ai-agents-arrived-in-2025-heres-what-happened-and-the-challenges-ahead-in-2026-272325) found that 70% of developers hit fundamental data infrastructure gaps only after launching agent initiatives. The model is no longer the bottleneck. Everything around the model is.
+If a model has a 95% chance of making the right decision at each step, it only has a 60% chance of getting through ten independent decisions without a mistake. Real agent work is not independent, which makes this worse. A bad decision early on changes the environment for every decision that follows.
 
-This gap — between what agents can theoretically do and what the infrastructure supports — is where the next wave of infrastructure companies will be built. Durable execution runtimes that survive crashes. Scheduling systems that manage GPU memory across multi-turn sessions. Sandboxed environments where agents can safely execute code. Observability tools that make 200-step traces legible. Human-agent interfaces that know when to pause and ask.
+In a prompt-response workflow, the human catches these mistakes. In a long-horizon workflow, the agent can build on the mistake for hours. By the time the human sees the result, the error may be buried under fifty reasonable-looking decisions.
 
-In [Part 2](/blog/long-horizon-agents-part-2), I will walk through this emerging infrastructure stack layer by layer — what exists, what is missing, and where the opportunities are for builders.
+This creates a new kind of management problem. If reviewing an agent's work takes as long as doing the work yourself, you have not created leverage. You have created a very fast employee whose work you cannot trust.
+
+METR measures the length of software tasks frontier agents can complete and found that the [50% time horizon has been doubling roughly every seven months](https://metr.org/time-horizons/). This is impressive progress, but the 50% is doing a lot of work in that sentence. An agent that completes an eight-hour task half the time is an incredible demo and a terrible employee.
+
+The useful threshold for outcome ownership is not whether the agent can occasionally produce the right result. It is whether you can trust it to make progress repeatedly, know when it is stuck and leave behind enough evidence to check its work.
+
+## From chatbots to digital employees
+
+There will not be a single moment when agents become employees. They will gradually take ownership of larger loops of work.
+
+First they complete a task while we watch. Then they complete a task in the background. Then they own a recurring workflow with clear success criteria. Eventually we give them a goal and they decide which workflows and tasks are required to reach it.
+
+Each step reduces the amount of human supervision and increases the cost of getting something wrong.
+
+```
+instruction -> task execution -> workflow execution -> outcome ownership
+             more autonomy and less human supervision ->
+```
+
+Today's models are already intelligent enough to move further along this spectrum than most production applications allow. What is missing is the infrastructure around them.
+
+Agents need durable execution so a six-hour assignment does not disappear when a process crashes. They need memory that survives beyond one context window. They need permissions and budgets that cannot be negotiated away through prompting. They need to know when to ask a human for help. And they need to produce a legible record of their work so a human can review the important decisions instead of reading the entire transcript.
+
+The prompt-response era mostly required an API endpoint. The long-horizon era will require a runtime.
+
+In [Part 2](/blog/long-horizon-agents-part-2), I will look at what that runtime needs and where the opportunities are for builders.
