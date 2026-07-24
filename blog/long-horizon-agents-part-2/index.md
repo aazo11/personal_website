@@ -1,104 +1,136 @@
 ---
-title: "long horizon agents, part 2: the runtime"
+title: "long horizon agents, part 2: the systems around the model"
 date: "2026-07-15"
 ---
 
-In [Part 1](/blog/long-horizon-agents-part-1), I argued that agents are shifting from prompt-response to long-horizon background execution, and that the current infrastructure cannot support this. The model is no longer the bottleneck. Everything around the model is.
+In [Part 1](/blog/long-horizon-agents-part-1), I argued that long-horizon agency is not a model running in a loop for a long time. It is the continuity of intelligent behavior across changing evidence, context boundaries, process failures and learning cycles.
 
-This post is about what "everything around the model" actually means.
+Long context helps with continuity, but it does not create it. A transcript can tell the model what happened. It cannot decide what should become organizational knowledge, whether an intermediate goal remains useful, how execution should recover after a failure or what behavior should change after an outcome.
 
-## The Harness and the Runtime
+For agents to move from completing tasks to owning outcomes, they need four systems around the model: organizational memory, goal orchestration, durable execution and learning.
 
-When people talk about building agents, they almost always mean the harness — the system prompt, the tool definitions, the orchestration logic, the planning strategy. This is the part that touches the model directly. It is where most of the effort goes today, and it is where most of the blog posts and frameworks are focused.
+The architectural boundaries are still unsettled. Model improvements may absorb pieces of each system. Other pieces are structurally properties of the harness, runtime or organization. It is more useful, for now, to define the functions that a long-horizon agent needs than to prematurely decide where every function belongs.
 
-The runtime is everything underneath. It is the infrastructure that keeps the agent alive when the process crashes, that manages memory across a six-hour session, that knows when to pause for human input, that makes a 200-step trace legible after the fact. The runtime does not make the agent smarter. It makes the agent *possible* in production.
+## Memory must be organizational
 
-The analogy I keep reaching for: the harness is your application code. The runtime is the operating system. You can write brilliant application code, but if the OS cannot manage memory, recover from faults, or schedule processes, nothing works.
+Most agent memory is really session continuity.
 
-Every failure mode I described in Part 1 — the memory wall, compounding errors, context drift, the trust problem — is a runtime failure. The model did not fail. The infrastructure around the model failed. Which means the fix is not a better model. It is a better runtime.
+It remembers what happened earlier in a conversation, retrieves a similar passage from an old transcript or writes a summary before the context window resets. This helps an agent resume work, but it is a thin version of what memory does inside an organization.
 
-Here is what that runtime needs.
+An experienced engineer does not merely remember yesterday's terminal output. They remember why the billing system has a strange retry rule, which migration failed last year, which shortcuts are tolerated and who needs to approve an API change.
 
-## Durable Execution
+An experienced sales rep remembers that healthcare buyers stall at security review, that a certain case study works with CFOs and that the company lost its last three deals because of the same missing integration.
 
-The first thing that breaks when an agent runs for hours is the process itself. API timeouts kill connections. Machines crash. Deploys restart containers. A human approval step blocks execution indefinitely. Without durability, any of these events means the agent loses all intermediate progress and starts over — or worse, silently produces garbage from a corrupted state.
+This knowledge is episodic, factual, procedural and political. Some of it belongs to the individual. Most of it becomes valuable when it is available to the organization.
 
-This is not a new problem. Workflow orchestration solved it for microservices a decade ago. The pattern is checkpoint-and-replay: persist the result of each step to durable storage, and if the process dies, replay the workflow from the last checkpoint, skipping completed steps and reusing their recorded outputs.
+Agent memory therefore cannot be scoped to a model session. If one agent discovers something useful on Monday, it should not need to rediscover it on Friday. Another agent working for the same organization should be able to benefit from it, subject to the same permissions as a human colleague.
 
-The key insight is that "just retry" does not work for agents. An LLM call costs real money ($0.10–$2.00 per call for frontier models), takes 10–60 seconds, and is non-deterministic. You cannot replay it and expect the same result. You have to checkpoint the *output* and skip the call on recovery. This is fundamentally different from retrying an idempotent HTTP request.
+Storing everything is not the answer. Organizational memory needs provenance, time and revision. It should know where a belief came from, why a decision was made, whether the underlying conditions have changed and which newer evidence supersedes it.
 
-[Temporal](https://temporal.io/blog/durable-execution-meets-ai-why-temporal-is-the-perfect-foundation-for-ai), [Inngest](https://www.inngest.com/blog/durable-execution-key-to-harnessing-ai-agents), and [Restate](https://restate.dev) are all adapting their core primitives for this use case, each with a different model for how checkpointing works. The patterns are converging even if the implementations differ.
+Remembering an obsolete pricing policy is worse than forgetting it.
 
-One open question: how granular should checkpoints be? Every tool call? Every LLM response? Every reasoning step? Too coarse and you lose progress. Too fine and the overhead of serializing and persisting state dominates your runtime. The right answer probably depends on the cost-per-step, but nobody has established clear best practices yet.
+This also means retrieval cannot be reduced to semantic similarity. The most textually similar memory is not necessarily the one relevant to the current decision. Retrieval has to be conditioned on the goal, the state of the work and the organization's current beliefs.
 
-## Memory
+The context window should be treated as a working set: a temporary view assembled for the decision in front of the model. Organizational memory is the durable, versioned system of record behind it.
 
-In Part 1, I described the memory wall — hard overflow, soft degradation, temporal drift. These are three different problems, and they need different solutions.
+Model improvements will make that working set easier to construct and use. But the memory itself probably remains outside the model. It needs to survive when the session ends, when the model changes and when the organization switches providers.
 
-**Short-term memory** is the agent's working context within a single run. This is where checkpointing matters most. Each completed step's output is persisted, so the agent can recover its thread-local state on failure. Think of it as the agent's RAM — volatile, scoped to the session, reconstructible from checkpoints.
+## Goals need orchestration
 
-**Long-term memory** is what persists across runs. An agent that debugged your payment system last week should remember the codebase layout, the deploy process, the gotchas it discovered. Without long-term memory, every run starts from zero. The agent is perpetually a first-day employee.
+Organizational goals are usually distant, ambiguous and sparsely rewarded.
 
-**Context management** is the active problem of deciding what stays in the window and what gets evicted. Bigger context windows help with hard overflow but do nothing for soft degradation — the "lost in the middle" problem where critical instructions get buried under pages of tool output. The runtime needs strategies for summarizing, compressing, and prioritizing what the model actually sees at each step.
+"Make the product scale" does not provide useful feedback after every code change. "Generate $500K in qualified pipeline" does not tell a sales rep whether the next account is worth pursuing.
 
-This is also where compute scheduling intersects with memory. The [Continuum paper](https://arxiv.org/pdf/2511.02230) showed that selectively pinning KV cache based on reload cost — rather than evicting it between tool calls the way traditional inference servers do — improved agent job completion times by over 8x. That is an 8x improvement from *scheduling alone*, no model improvements required. A sign of how much performance is being left on the table by infrastructure designed for a different workload.
+An agent cannot wait until the end of a three-month goal to find out whether it made good decisions. It needs to break a distant goal into smaller intermediate goals with shorter feedback loops.
 
-## Human-in-the-Loop
+```
+organizational goal
+    -> intermediate goal
+        -> short-term goal
+            -> tasks
+```
 
-The most underappreciated runtime capability is knowing when to stop and ask a human.
+A good intermediate goal does two things. It makes progress measurable over a shorter period, and it produces evidence about whether the larger strategy is working.
 
-An agent running for hours needs to know *when* to pause for input. Not at every step — that defeats the purpose of automation. Not never — that leads to the compounding errors I described in Part 1, where a wrong decision on step 12 becomes load-bearing by step 50. The agent needs judgment about its own uncertainty, and the runtime needs a mechanism for interrupting, inspecting, and redirecting a running agent without killing it.
+Before re-architecting a product, an engineer might establish a performance baseline and identify the actual bottleneck. A successful benchmark is an intermediate reward. It does not prove the product will scale, but it reduces uncertainty about whether the next investment is justified.
 
-The emerging pattern looks like pull requests for agent work. The agent does a chunk of autonomous work, produces an artifact, and opens something like a review — here is what I did, here is why, here are the parts I am uncertain about. The human approves, rejects, or redirects. Then the agent continues.
+Before scaling outbound sales, a rep might try to generate ten qualified conversations inside one customer segment. Replies, meetings and stage progression provide intermediate rewards. They reveal whether the targeting and message are working before the rep burns through the entire market.
 
-This is fundamentally a protocol problem, not a UI problem. The runtime needs primitives for interrupt-and-resume: pause execution, surface a decision to a human through whatever channel they prefer (Slack, email, a dashboard), wait indefinitely for a response, and continue from exactly where it left off. The interrupt cannot corrupt state. The resume cannot lose context.
+The danger is that intermediate rewards become detached from the outcome they were meant to predict.
 
-Getting this right determines whether anyone actually trusts the output. The model doing the work is the easy part. The human-agent feedback loop is where trust is built or lost.
+A sales agent rewarded for meetings will book bad meetings. An engineering agent rewarded for passing tests can make the test suite green while making the product worse. Once a proxy becomes a target, the agent can optimize the proxy instead of the goal.
 
-## Guardrails and Security
+Good orchestration therefore requires more than breaking work into smaller pieces. It has to preserve the causal relationship between local progress and the original outcome.
 
-An agent with tool access is an agent with attack surface. The more autonomous and long-running the agent, the more damage a prompt injection or tool misuse can do.
+The plan itself must also remain provisional. Every intermediate result changes the agent's understanding of the problem. The system must be able to revise sub-goals, abandon a strategy and reallocate effort without losing the original objective.
 
-The runtime needs policy enforcement that operates *outside* the model's reasoning. Token and cost budgets that hard-kill a run before it burns $500 on a loop. Scope boundaries that prevent an agent authorized to read a database from writing to it. PII redaction on inputs and outputs. Rate limiting on sensitive tool calls.
+Plans are hypotheses about how a goal can be reached, not scripts to be executed blindly.
 
-These cannot be suggestions in the system prompt. They must be infrastructure-level constraints — middleware that the agent cannot reason its way around. The [governance gap](https://theconversation.com/ai-agents-arrived-in-2025-heres-what-happened-and-the-challenges-ahead-in-2026-272325) is real: organizations are deploying agents faster than they can secure them. A runtime that enforces guardrails by default closes part of that gap.
+Today this probably means separating planning, execution and evaluation inside the harness. They may all use the same underlying model, but they should not necessarily share the same context or incentives. The system performing the work should not be the sole judge of whether the work is good.
 
-The same logic extends to code execution. When an agent writes and runs code, that code was not written by a human, cannot be fully reviewed before execution, and may do destructive things. You need hardware-level sandboxing — isolated environments where the agent can operate without risk to the host. [E2B](https://e2b.dev) went from 40K sandbox sessions per month in March 2024 to roughly 15M by March 2025. Agents are writing and executing a lot of code, and they need a place to do it safely.
+## Durable execution in an entropic world
 
-## Observability
+Intelligence deployed into the world inherits the world's failure modes.
 
-Traditional application monitoring answers: is the service up? What is the p99 latency? What is the error rate? None of these questions are useful for a background agent that has been running for four hours.
+Machines crash. Networks partition. APIs return errors. Credentials expire. Deploys restart containers. Humans take the weekend to approve something. The environment can change while the agent is waiting.
 
-The questions you actually need to answer:
+The world is full of entropy.
 
-- What is the agent *doing* right now?
-- Has it drifted from the original objective?
-- How much has it spent so far and what is the projected cost?
-- At which step did it go wrong?
-- Can I replay the run from step 47 with a different decision?
+A long-horizon agent is therefore a distributed system with a stochastic decision-maker inside it. That is a much harder object to operate than a chatbot.
 
-This requires structured traces, not log lines. Each LLM call, tool invocation, and decision point needs to be a node in a trace with inputs, outputs, latency, cost, and a human-readable explanation of what the agent was thinking.
+If the process disappears six hours into a migration, the work cannot disappear with it. The system needs to know which steps completed, which side effects occurred, which assumptions were valid and where execution should resume.
 
-But tracing alone is not enough. The harder problem is evaluation — and it connects directly back to the trust problem from Part 1. How do you grade a six-hour agent run? You cannot eyeball a 200-step trace. Some approaches: checkpoint evaluation that inserts validation gates at intermediate steps, output validation agents that use a second model to review the first, anomaly detection that flags runs where cost or step count deviates from baselines. Each has tradeoffs. None are fully solved.
+A simple retry is not enough. LLM calls are non-deterministic, so replaying the same prompt may produce a different decision. Tool calls can have irreversible effects. Reading a file twice is harmless. Sending an email, issuing a refund or deleting a database row twice is not.
 
-The key insight, which [LangSmith](https://www.langchain.com/langsmith/observability) and [Braintrust](https://www.braintrust.dev/articles/agent-observability-complete-guide-2026) are converging on: tracing and evaluation are not separate products. You need to connect what happened in production to a quality judgment about whether it was correct. The trace is evidence. The eval is the verdict. They belong in the same system.
+The execution layer needs durable checkpoints, classified retries, budgets, pause-and-resume and a ledger of external side effects. When an operation partially fails, it needs to know whether to retry, compensate, escalate or stop.
 
-The most powerful capability this unlocks is time travel — replaying a run from any checkpoint with a modified state or decision. This converts debugging from "stare at logs" to "rewind and try a different path," and it is only possible if the runtime has been checkpointing all along. Durable execution enables observability enables debugging. The capabilities compound.
+Human input is also part of execution state. An agent should be able to pause for three days while waiting for approval and resume from the same logical point without keeping a process alive or reconstructing the decision from a transcript.
 
-## The Capabilities Compound
+This requirement is definitively outside the model.
 
-That last point is worth dwelling on. These runtime capabilities are not independent layers you bolt on one at a time. They are deeply interconnected, and the value of each one increases when the others are present.
+A model can reason brilliantly about what to do next. It cannot preserve a process after the machine running it has disappeared. A system that cannot survive a restart cannot own an outcome for longer than the lifetime of its process.
 
-Durable execution gives you checkpoints. Checkpoints give you memory recovery *and* time-travel debugging *and* interrupt-resume for human-in-the-loop. Observability gives you traces. Traces give you evaluation data *and* anomaly detection *and* cost tracking that feeds into guardrails. Human-in-the-loop gives you trust. Trust gives you the willingness to let the agent run longer, which makes durability and memory management more critical.
+## Remembering is not learning
 
-This is why "just add checkpointing" or "just add tracing" feels insufficient when teams try it piecemeal. Each capability solves a narrow problem on its own. Together, they form a runtime that makes long-horizon agents actually viable.
+Memory records what happened. Learning changes what happens next.
 
-## The Database Analogy
+An agent that remembers making the same mistake last week and then repeats it has memory, but it has not learned.
 
-Here is the mental model I keep coming back to. In the early days of software, applications managed their own storage — flat files, custom binary formats, hand-rolled indexing. Then databases emerged and applications stopped managing storage. The application layer became thinner and more focused on business logic, while the data layer got its own specialized infrastructure with decades of engineering behind it.
+Long-running agents will generate enormous amounts of experience: plans, tool calls, failures, corrections, human interventions and outcomes. The hard problem is converting those trajectories into better future behavior.
 
-Agents today are in the flat-file era. Every team building a long-running agent is hand-rolling its own state management, its own checkpointing, its own execution recovery, its own memory strategy. Most are doing it badly, because it is genuinely hard and it is not their core competency.
+This is a credit-assignment problem. A successful outcome does not mean every decision along the way was good. A failed outcome does not tell you which decision caused the failure. Before the system can improve, it has to diagnose what should be reinforced and what should change.
 
-The infrastructure companies that win this market will be the ones that give agent builders the equivalent of `CREATE TABLE` — simple primitives that handle the hard problems of durability, memory, coordination, and recovery so that the application layer can focus on the harness: what the agent actually does and how it reasons.
+Some learning can happen in the harness. Experience can update playbooks, system prompts, tool descriptions, routing rules, evaluators and organizational memory. Work such as [Combee](https://arxiv.org/abs/2604.04247) explores how agents can consolidate lessons from many prior trajectories into reusable prompt-level knowledge without changing the underlying model.
 
-The prompt-response era built a $300B industry on a simple runtime: stateless API calls with request-response semantics. The long-horizon era needs a fundamentally different runtime, and the teams building it right now are laying the foundation for everything that comes next.
+Harness-level learning has practical advantages. It can be organization-specific, immediate, inspectable and reversible. If a new sales playbook makes performance worse, the company can compare versions and roll it back.
+
+Some learning may happen inside the model. Today, most deployed models remain static after training. They adapt inside a context window, but their weights do not improve after completing a task. Research such as [self-distillation fine-tuning](https://arxiv.org/abs/2601.19897) suggests that models may eventually accumulate skills over time without catastrophically forgetting what they already know.
+
+The likely architecture is a two-speed learning system.
+
+The harness learns quickly from local experience. The model consolidates more general skills slowly across many experiences.
+
+Both loops need evaluation and governance. Allowing an agent to rewrite its own instructions after every outcome would create adaptation, but not necessarily improvement. The system needs evidence that a change generalizes, versioning so the change can be inspected and rollback when the agent learns the wrong lesson.
+
+```
+experience
+    -> outcome
+        -> diagnosis
+            -> update
+                -> evaluation
+                    -> future behavior
+```
+
+A self-modifying system without an evaluation loop does not compound intelligence. It compounds drift.
+
+## These systems form a loop
+
+Memory gives the agent access to what the organization has learned. Orchestration converts a distant outcome into decisions that can be evaluated before the end of the project. Durable execution preserves those decisions and their effects as the world changes. Learning turns the resulting experience into better behavior on the next attempt.
+
+None of these systems is sufficient on its own.
+
+Memory without learning becomes an archive. Orchestration without memory repeats old mistakes. Durable execution without good orchestration reliably executes the wrong plan. Learning without durable records has no trustworthy experience from which to learn.
+
+Together, they create something a larger context window cannot: continuity not just of information, but of purpose, action and improvement.
+
+The architectural boundaries will keep moving as models improve. The functional requirements will remain.
