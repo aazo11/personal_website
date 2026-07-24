@@ -1,7 +1,10 @@
 ---
 title: "long horizon agents, part 1: the end of prompt-and-response"
 date: "2026-07-15"
+featuredImage: "/blog/long-horizon-agents-part-1/work-working.gif"
 ---
+
+![Kramer at work](work-working.gif)
 
 ## How work gets done
 
@@ -22,15 +25,13 @@ Even when an agent uses tools and skills across multiple steps, the human still 
 
 A task has a clear input and output. A tool can help complete it. But intelligent humans are not hired simply to complete a collection of tasks. They are given an area of responsibility and expected to deliver an outcome.
 
-A task ends when an output is produced. Ownership persists until an outcome is achieved.
+Take a software engineer. Refactoring a module or fixing compile-time errors are tasks. Making sure the backend can scale with seasonal traffic patterns while minimizing cloud spend is an outcome. The engineer needs to understand the architecture, decide what needs to change (if anything), weigh tradeoffs, sequence the work, then monitor outcomes and adjust the plan when they find something unexpected. To understand seasonality, they might study historical trends or ask others in the organization. As new patterns emerge, they update their understanding.
 
-Take a software engineer. Refactoring a module or fixing compile-time errors are tasks. Making sure a SaaS product can scale with seasonal traffic patterns while minimizing cloud spend is an outcome. The engineer needs to understand the existing architecture, decide what needs to change, weigh tradeoffs, sequence the work, then monitor outcomes and adjust the plan when they find something unexpected.
+Or consider a sales rep. Writing a follow-up email after a sales call and logging it in the CRM are tasks. Generating $500K in qualified pipeline from a new territory for a new product is an outcome. The rep needs to understand the customer pain and product value, identify accounts, find the right people, personalize outreach, handle objections and learn which messages are working. If the pipeline is not growing, they need to diagnose whether the problem is their own targeting and messaging or an issue from another team, such as product or engineering.
 
-Or consider a sales rep. Writing a follow-up email and logging it in the CRM are tasks. Generating $500K in qualified pipeline from a new territory is an outcome. The rep needs to identify accounts, find the right people, personalize outreach, handle objections and learn which messages are working. If the pipeline is not growing, they need to diagnose whether the problem is their own targeting and messaging or an issue from another team, such as product or engineering.
+Current agents are very good at completing tasks, especially when the output can be verified immediately. But they are surprisingly bad at making informed decisions over long time horizons. Before our systems can go from completing tasks to owning outcomes, they need infrastructure that can give them four things: organizational memory, orchestration of goals, a durable execution layer and the ability to learn from experience.
 
-Current agents are very good at completing tasks, especially when the output can be verified immediately. But they are surprisingly bad at making informed decisions over long time horizons. Before our systems can go from completing tasks to owning outcomes, they need infrastructure that can give them four things: organizational memory, hierarchical orchestration, durable execution and the ability to learn.
-
-Whether, and how much of, the four functions described above need to be native to the model vs. built into the harness is still an open question. However, it is clear that the problem goes beyond limited context length.
+Whether these four functions need to be native to the model or built into the harness, and to what extent, is still an open question. However, it is now clear that the problem cannot be solved by increasing context length.
 
 ## Longer context is not enough
 
@@ -40,23 +41,23 @@ Most agents implement some variation of [ReAct](https://arxiv.org/abs/2210.03629
 model + tools + loop + infinite context = autonomous agent
 ```
 
-If context windows became large enough, the agent could keep every prior thought, action and observation in view. The loop could run forever and the agent would learn in context. But an infinite context window is a perfect transcript that tells the model everything that happened. It does not tell the model what remains important, which beliefs should be revised, whether the current plan still serves the original goal or what knowledge should survive after the assignment ends.
+The corollary was that if the context window became large enough, the agent could keep every prior thought, action and result in view, loop forever and learn in context.
 
-Anthropic ran into this while building [long-running coding agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents). Compaction allowed an agent to continue across context windows, but it was not enough to reliably build a large application. The harness still needed to decompose the work, create structured handoffs and preserve state outside the conversation. In later experiments, Anthropic sometimes found that clearing the context completely worked better than carrying a compressed version forward.
+This approach does not work. Recent work found a [roughly 30% accuracy drop](https://arxiv.org/abs/2410.10813) when long-context models had to remember information across sustained interactions. Over longer horizons, agents also suffer from what researchers call ["behavioral state decay"](https://arxiv.org/abs/2607.08716): requirements, prior attempts, diagnoses and open sub-goals can remain somewhere in the trajectory yet stop influencing the agent's decisions.
 
-## What long-horizon agents need
+Long context gives an agent a larger transcript. It does not decide what remains important, which beliefs should be revised or whether the current plan still serves the original goal.
 
-Long-horizon agency is not a model running in a loop for a long time. It is the continuity of intelligent behavior across changing evidence, context boundaries, process failures and learning cycles.
+## The four missing systems
 
-That continuity requires four systems:
+In short, long-horizon agency cannot be built simply with a model running in a loop for a long time. It needs systems that can provide continuity of intelligent behavior across changing evidence, context boundaries, process failures and learning cycles.
 
-- **Organizational memory** so useful knowledge survives beyond a session and becomes available to other agents.
-- **Goal orchestration** so distant outcomes can be decomposed into intermediate goals with shorter feedback loops.
-- **Durable execution** so work survives crashes, delays and irreversible interactions with the outside world.
-- **Learning** so experience changes future behavior instead of merely accumulating in a transcript.
+That continuity depends on four systems:
 
-The boundaries between these systems will move. Some capabilities may become native to models. Others are properties of the harness, runtime or organization around the model. The jury is still out on exactly where each piece belongs.
+- **Organizational memory.** Most agent memory is scoped to a single session. Long-horizon agents need useful knowledge to survive beyond that session, evolve as facts change and become available to other agents in the organization.
+- **Goal orchestration.** Distant outcomes do not provide enough feedback to guide each decision. Agents need to break them into intermediate goals that make progress measurable without losing the relationship between a local reward and the original objective.
+- **Durable execution.** Long-running work has to survive crashes, expired credentials, delayed approvals and irreversible interactions with the outside world. The execution layer must preserve state and know whether a failed operation should be retried, reversed, escalated or stopped.
+- **Learning.** A transcript records what happened; learning changes what happens next. Agents need a way to turn outcomes into better playbooks, instructions, memory and, potentially, model behavior without allowing every noisy experience to rewrite the system.
 
-But the requirements themselves are becoming clear. A longer context window can preserve more of what happened. It cannot, by itself, decide what the organization should remember, whether the plan still serves the goal, how work should resume after a failure or what should change after an outcome.
+The boundaries between these systems will move. Memory, for example, may eventually absorb some of what we now call learning. Some capabilities may become native to models. Others will remain properties of the harness, runtime or organization around the model. The primitives powering these systems are still being designed and implemented.
 
-In [Part 2](/blog/long-horizon-agents-part-2), I will examine each of these systems and how they turn task completion into outcome ownership.
+In future posts, I will dive deeper into each of these systems, existing approaches and how they can help agents graduate from task completion into outcome ownership.
