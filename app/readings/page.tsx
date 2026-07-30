@@ -27,6 +27,18 @@ export default function ReadingsPage() {
         <h3>Papers</h3>
         <ul>
           <li>
+            <a href="https://arxiv.org/pdf/2603.28052" target="_blank" rel="noopener noreferrer">Meta-Harness: End-to-End Optimization of Model Harnesses</a>
+            <p className="post-date">Lee, Nair et al.</p>
+          </li>
+          <li>
+            <a href="https://arxiv.org/pdf/2604.04247" target="_blank" rel="noopener noreferrer">Combee: Scaling Prompt Learning for Self-Improving Language Model Agents</a>
+            <p className="post-date">Li, He et al.</p>
+          </li>
+          <li>
+            <a href="https://arxiv.org/pdf/2511.02230" target="_blank" rel="noopener noreferrer">Continuum: Efficient and Robust Multi-Turn LLM Agent Scheduling with KV Cache Time-to-Live</a>
+            <p className="post-date">Li, He et al.</p>
+          </li>
+          <li>
             <a href="https://arxiv.org/pdf/2601.19897" target="_blank" rel="noopener noreferrer">Self-Distillation Enables Continual Learning</a>
             <p className="post-date">Shenfeld, Damani et al.</p>
           </li>
@@ -50,6 +62,14 @@ export default function ReadingsPage() {
         
         <h3>Books</h3>
         <ul>
+          <li>
+            <a href="https://www.goodreads.com/book/show/11298.A_Wild_Sheep_Chase" target="_blank" rel="noopener noreferrer">A Wild Sheep Chase</a>
+            <p className="post-date">Haruki Murakami</p>
+          </li>
+          <li>
+            <a href="https://www.goodreads.com/book/show/183922.On_the_Natural_History_of_Destruction" target="_blank" rel="noopener noreferrer">On the Natural History of Destruction</a>
+            <p className="post-date">W.G. Sebald</p>
+          </li>
           <li>
             <a href="https://www.goodreads.com/book/show/16690.The_Moon_Is_a_Harsh_Mistress" target="_blank" rel="noopener noreferrer">The Moon Is a Harsh Mistress</a>
             <p className="post-date">Robert A. Heinlein</p>
