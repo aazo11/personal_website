@@ -36,9 +36,9 @@ Without the missing systems, letting an agent loop longer does not make it a lon
 
 ## The five missing systems
 
-In short, long-horizon agency cannot be built simply with a model running in a loop for a long time. It needs systems that can provide continuity of intelligent behavior across changing evidence, context boundaries, process failures and learning cycles.
+Our existing agents in a loop do not have long term agency because they’re missing the critical systems that provide continuity of intelligent behavior across changing evidence, context boundaries, process failures and learning cycles.
 
-That continuity depends on five systems:
+We believe we need robust systems in the following categories before agents can own outcomes across long horizons:
 
 - **Shared memory.** Most agent memory is scoped to a single session. Long-horizon agents need useful knowledge to survive beyond that session, evolve as facts change and become available to other agents in the organization.
 - **Goal orchestration.** Distant outcomes do not provide enough feedback to guide each decision. Agents need to break them into intermediate goals that make progress measurable without losing the relationship between a local reward and the original objective.
