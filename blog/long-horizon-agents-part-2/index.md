@@ -1,6 +1,6 @@
 ---
 title: "Long-Horizon Agents, Part 2: Memory Is More than Recall"
-date: "2026-08-28"
+date: "2026-10-02"
 summary: "Agent memory is more than recall: write policies, read policies, and storage representations determine how past experience shapes future behavior."
 featuredImage: "/blog/long-horizon-agents-part-2/memento-leonard-polaroid.jpg"
 ---
@@ -168,8 +168,6 @@ Mubit’s system is able to prioritize procedural guidance over raw history usin
 
 ## Memory Is Still Taking Shape
 
-Agent memory is still a young category. The systems above offer different answers to the same questions: what should survive an interaction, how should it change as new evidence arrives, and when should it influence the next decision? The platforms need to mature as we ask agents to carry that knowledge across longer periods, more tasks, and more people.
+Agent memory is still a new category with unsettled boundaries. It overlaps deeply with learning and the agent framework. We don't yet know if it will be a stand-alone category similar to the vendors listed above or tied with learning (Trajectory) or the harness (Langchain and increasingly Letta).
 
-The boundaries are unsettled too. When a memory system turns a failed run into a reusable lesson and evaluates whether that lesson improves future outcomes, it overlaps with learning. When it decides what context to assemble and when an agent should retrieve more information, it overlaps with the agent framework. We don't yet have settled answers about which responsibilities belong in a dedicated memory platform and which belong in the harness around it.
-
-For builders, those open questions are part of the opportunity. There is room to improve how agents reconcile conflicting evidence, retire outdated guidance, and measure whether remembering something actually leads to a better decision. It's an exciting time to be building in this space. The choices being made now will shape how agents move from completing isolated tasks to owning outcomes over time.
+For builders, those open questions are part of the opportunity. 
