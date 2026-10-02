@@ -80,15 +80,25 @@ export function getBlogPostBySlug(slug: string): BlogPost | null {
 export async function getBlogPostWithHtml(slug: string): Promise<BlogPost | null> {
   const post = getBlogPostBySlug(slug)
   if (!post) return null
-  
-  const processedContent = await remark()
-    .use(html)
-    .process(post.content)
-  
+
   return {
     ...post,
-    contentHtml: processedContent.toString()
+    contentHtml: await renderBlogMarkdown(post.content)
   }
+}
+
+export async function renderBlogMarkdown(content: string): Promise<string> {
+  const processedContent = await remark()
+    .use(html)
+    .process(content)
+
+  // A standalone YouTube link with the Markdown title "embed" opts into a player.
+  // Keep Markdown sanitization, then generate only this fixed, validated embed.
+  return processedContent.toString().replace(
+    /<p>(<a href="https:\/\/www\.youtube\.com\/watch\?v=([A-Za-z0-9_-]{11})" title="embed">([^<]+)<\/a>)<\/p>/g,
+    (_match, link: string, videoId: string, label: string) =>
+      `<div class="blog-video"><iframe src="https://www.youtube-nocookie.com/embed/${videoId}" title="${label.replace(/"/g, '&quot;')}" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe><p>${link.replace(' title="embed"', '')}</p></div>`
+  )
 }
 
 export function getAllBlogPosts(): BlogPost[] {
