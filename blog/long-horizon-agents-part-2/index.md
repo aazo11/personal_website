@@ -7,7 +7,7 @@ featuredImage: "/blog/long-horizon-agents-part-2/memento-leonard-polaroid.jpg"
 
 ![Leonard Shelby examining a Polaroid in Memento](memento-leonard-polaroid.jpg)
 
-*Memento (2000): carrying evidence into the next decision. 
+*Memento: carrying evidence into the next decision. 
 
 ## Remember when it matters 
 
@@ -19,11 +19,11 @@ To understand agent memory, we shouldn't think of it as a place to store the pas
 * Learning can't happen without memory, and an agent cannot learn if the outcome of one attempt disappears before the next
 * It cannot coordinate with other agents if each action begins with an isolated view of the organization
 
-It is tempting to describe this as a storage problem. Save the agent's interactions, embed them, and retrieve the closest results before the next model call. That produces persistence, but not necessarily memory. A useful memory system must decide what to write, how to represent it, when to retrieve it, how to resolve conflicting information, and whether/how an outcome should modify future behavior. The systems covered here implement this functionality *outside* the model, in the harness layer that controls the agent loop.
+It is tempting to describe this as a storage problem. Save the agent's interactions, embed them, and retrieve the closest results before the next model call. That produces persistence, but not necessarily memory. A useful memory system must decide what to write, how to represent it, when to retrieve it, how to resolve conflicting information, and whether/how an outcome should modify future behavior. 
 
 ## Memory as a Stateful Control Loop
 
-At time `t`, an agent receives an observation, assembles context and chooses an action. We can therefore describe a simplified agent without persistent memory as:
+Current agent architectures imeplement these memory systems implement in the harness layer. At time `t`, an agent receives an observation, assembles context and chooses an action. We can therefore describe a simplified agent without persistent memory as:
 
 ```
 action_t = model(instructions, recent_messages, observation_t)
@@ -51,13 +51,11 @@ M_t+1 = F(
 
 `F` determines which observations become persistent state and how they revise existing records. `R` selects the state that reaches the next model call. Both can combine stochastic compute and deterministic code. Outcomes may arrive much later than actions. The write path must associate delayed evidence with the original action and revise any lessons derived from it.
 
-The implementation of memory comes down to three connected choices: the write policy, the read policy, and the storage representation. Claude Code gives us a concrete example of how a harness combines them.
-
-I came across [himanshu's walkthrough of Claude Code's memory architecture](https://x.com/himanshustwts/status/2038924027411222533) while reading about memory systems. The diagram separates the paths that create and revise memory from the paths that bring it back into context:
+The implementation of memory comes down to three connected choices: the write policy, the read policy, and the storage representation. We can look at [Himanshu Dubey's walkthrough of Claude Code's memory architecture](https://x.com/himanshustwts/status/2038924027411222533) for a concrete example of how a harness implements these in today's agents. The diagram separates the paths that create and revise memory from the paths that bring it back into context:
 
 [![Diagram from himanshu's Claude Code source-code analysis, showing memory write paths, an index, topic files, session transcripts and read paths](claude-code-memory-architecture.webp)](https://x.com/himanshustwts/status/2038924027411222533)
 
-*Source: [himanshu on X, March 31, 2026](https://x.com/himanshustwts/status/2038924027411222533). This is a source-code analysis, not an official architecture diagram. Internal mechanisms such as `autoDream` and `extractMemories` reflect the version analyzed. The walkthrough below uses public documentation for shipped behavior.*
+*Source: [himanshu on X, March 31, 2026](https://x.com/himanshustwts/status/2038924027411222533) from source-code analysis, not an official architecture diagram. Internal mechanisms such as `autoDream` and `extractMemories` reflect the version analyzed.*
 
 To follow these choices through one task, imagine using Claude Code to investigate a database migration that broke an older worker. During the investigation, the developer explains that customers upgrade their workers independently of the backend, and that a rollout tracker records which versions are still running. What should survive it, and how should that information affect the next migration?
 
@@ -71,7 +69,7 @@ A write policy determines what gets retained, who interprets it, and when the re
 
 ![A Polaroid in Memento annotated with “Don't believe his lies”](memento-annotated-polaroid.jpg)
 
-*Memento (2000): a photograph records an observation; the handwritten note tells a future self how to act. Not all preserved instructions are trustworthy. [Still via Pictures in Motion](https://picinmotion.wordpress.com/2012/07/11/director-dissection-christopher-nolan-memento-2000/).*
+*In Memento: a photograph records an observation; the handwritten note tells a future self how to act. Not all preserved instructions are trustworthy. [Still via Pictures in Motion](https://picinmotion.wordpress.com/2012/07/11/director-dissection-christopher-nolan-memento-2000/).*
 
 **Use a separate extraction pipeline.** Another approach is processing recorded sessions independently of the agent with an *extractor*. Converting the resulting data from the job into appropriate data fields provides a consistent schema and lets us rerun extraction when the policy changes, provided the source history survives. However, the extra processing adds cost and potential risk of misinterpreting evidence. It also separates *extraction* (used to identify candidate facts) from *consolidation* (deciding whether new facts should update an existing memory). See [Letta Code's context repositories](https://www.letta.com/blog/context-repositories/) for documented examples of using background consolidation to update agent memory.
 
@@ -116,7 +114,7 @@ The index helps discover the notes, which explain the constraint and point to it
 
 **Entity-relationship graphs.** Using graphs could connect customers to worker fleets, fleets to software versions, and versions to schema requirements. Adding temporal relationships could indicate when each dependency applied. With graphs, multi-step questions (like which customers still depend on a particular column) become easier to express. However, as underlying deployments change, graphs require extraction, entity resolution, and updates to remain accurate.
 
-*Note: [Vector indexes](https://www.ibm.com/docs/en/db2/12.1.x?topic=indexes-vector)* (specialized data structures that organize embeddings to speed up searches) can sit *alongside* different representations to find similar content. However, vector indexes do *not* determine whether facts are current, whether records refer to the same worker, or whether a proposed lesson is justified. For example, selection, organization, and retrieval seem like a huge part of memory design for Claude Code, even when the durable records are ordinary files. (For more on latent and parametric memory, see the report [Memory in the Age of AI Agents](https://arxiv.org/abs/2512.13564).)
+*Note: Vector indexes*  can sit *alongside* different representations to find similar content. However, vector indexes do *not* determine whether facts are current, whether records refer to the same worker, or whether a proposed lesson is justified. For example, selection, organization, and retrieval seem like a huge part of memory design for Claude Code, even when the durable records are ordinary files. (For more on latent and parametric memory, see the report [Memory in the Age of AI Agents](https://arxiv.org/abs/2512.13564).)
 
 [Inside Out](https://www.youtube.com/watch?v=IQ8Aak-k5Yc "embed")
 
